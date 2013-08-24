@@ -3,6 +3,7 @@ package com.bouacheria.ami.controller.request;
 import javax.jws.HandlerChain;
 import javax.validation.Valid;
 
+import org.apache.commons.lang.StringUtils;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -82,18 +83,21 @@ public class ServiceRequestController {
 			serviceRequestAndCaseHelper.addRefDataToModel(model);
 			return "serviceRequest";
 		}
+		
+		String ageError = serviceRequest.isValidPatientAge();
+		if(StringUtils.isNotEmpty(ageError))
+		{
+			serviceRequestAndCaseHelper.addRefDataToModel(model);
+			model.addAttribute("serviceRequestMessage", ageError+ ". See valid examples in the brackets: [2y] [2y 1m] [1m 3d] [1m] [3d]");
+			return "serviceRequest";
+		}
 		if(!serviceRequest.isInterpretationOnly() && !serviceRequest.hasAtLeastOneImagingServie())
 		{
 			serviceRequestAndCaseHelper.addRefDataToModel(model);
 			model.addAttribute("serviceRequestMessage", "You must select at least one service if you have selected the imaging service type");
 			return "serviceRequest";
 		}
-		if(serviceRequest.isValidPatientAge()!=null)
-		{
-			serviceRequestAndCaseHelper.addRefDataToModel(model);
-			model.addAttribute("serviceRequestMessage", "Invalid Patient age. See valid examples in the brackets: [2y] [2y 1m] [1m 3d] [1m] [3d]");
-			return "serviceRequest";
-		}
+		
 		serviceRequest.upperCaseFields();
 		
 		
