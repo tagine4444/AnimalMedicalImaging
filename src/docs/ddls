@@ -1,0 +1,59 @@
+
+--drop table animals;
+--drop table animals;
+
+CREATE TABLE animals (
+     id BIGINT NOT NULL AUTO_INCREMENT,
+     first_name VARCHAR(30),
+     last_name VARCHAR(30),
+     age INTEGER,
+     dob_day INTEGER,
+     dob_onth INTEGER,
+     dob_year INTEGER,
+     street_number INTEGER ,
+     address VARCHAR(1000),
+     state_province VARCHAR(100),
+     country VARCHAR(100),
+     notes VARCHAR(2000),
+     PRIMARY KEY (id)
+) ENGINE=MyISAM;
+
+
+--drop table owner;
+
+CREATE TABLE owner (
+     id BIGINT NOT NULL AUTO_INCREMENT,
+     first_name VARCHAR(30),
+     last_name VARCHAR(30),
+     age INTEGER,
+     dob_day INTEGER,
+     dob_onth INTEGER,
+     dob_year INTEGER,
+     street_number INTEGER ,
+     address VARCHAR(1000),
+     state_province VARCHAR(100),
+     country VARCHAR(100),
+     notes VARCHAR(2000),
+     homePhone VARCHAR(20),
+	 cellPhone VARCHAR(20),
+	 workPhone VARCHAR(20),
+	 fax VARCHAR(20),
+     
+     PRIMARY KEY (id)
+) ENGINE=MyISAM;
+
+--drop table cases
+CREATE TABLE cases (
+     id BIGINT NOT NULL AUTO_INCREMENT,
+     animal_id BIGINT,
+     owner_id BIGINT,
+     notes VARCHAR(2000),
+     vet_desc VARCHAR(2000),
+     status VARCHAR(20),
+     start_date DATE,
+     end_date DATE,
+     PRIMARY KEY (id)
+) ENGINE=MyISAM;
+
+
+

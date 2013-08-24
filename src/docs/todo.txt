@@ -1,0 +1,27 @@
+Todo
+
+Fix Add charges page
+Add Charge Admin page to add/update/delete charges
+Fix PDF generator.
+Enhance Search page
+Create Loading Script for charges (from excell spreadsheet maybe?)
+Update client profile
+manage uploaded file (clean up)
+Adde validation so that user cannot edit a request that has been already picked up.
+Security Make sure on controller that chuck's side is not accessible to vet users 
+Add a button to show all incomplete requests... for chuck on the search page
+
+Bugs Make sure the tool bar is consistently the same milage fee must be double 
+and not long: cannot add a milage fee that has 22.3333 miles
+
+Is there a billiable address in addition to address(which is physical)?
+Add Hospital Email to the create account page (hospital should also have an email)
+
+Show AMI amendments on readonly...so that requesting vet can see it
+Add a Vet visisble notes on the Case so that added notes could be made available to the vet
+Add a date on the charges (to show when the charges was created)
+
+Put db config in properties file
+
+Add Search per customer and dates for AMI 
+Add Billing Cycle to Hospital
