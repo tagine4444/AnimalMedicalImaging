@@ -1,0 +1,16 @@
+
+.error {
+			color: #ff0000;
+			font-style: italic;
+}
+
+input.input-medium{
+  		height: 30px;
+		}
+input.input-small{
+  		height: 30px;
+		}
+
+input.input-mini{
+  		height: 30px;
+		}
