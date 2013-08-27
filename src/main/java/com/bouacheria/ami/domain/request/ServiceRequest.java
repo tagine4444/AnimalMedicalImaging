@@ -1063,6 +1063,15 @@ public class ServiceRequest {
 		{
 			//11m
 			maxLength = 3;
+			
+			
+			boolean shouldbUpdate = false;
+			if(age.length() > indexM)
+			{
+				age = age.substring(0, indexM +1);
+				shouldbUpdate = true;
+			}
+			
 			if(ageLength > maxLength)
 			{
 				return "Age too long";
@@ -1073,6 +1082,11 @@ public class ServiceRequest {
 			if(!StringUtils.isNumeric(numOfM))
 			{
 				return "Invalid age";
+			}
+			
+			if(shouldbUpdate)
+			{
+				setPatientAge(age);
 			}
 			return null;
 		}
