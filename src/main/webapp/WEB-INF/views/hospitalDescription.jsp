@@ -10,11 +10,12 @@
    			</div>
    			<div class="span2">
 	    		<label>
-	    		
+	    		Your Name
 	    		<a id="requestedbyPopover" href="#" data-toggle="popover" tabindex="-1"
-						title="" data-content="It helps us know who requested this form on behalf of the veterinarian. Please enter your name if you are the veterinarian" 
+						title="" data-content="It helps us know who filled out this form on behalf of the veterinarian. 
+						Please enter your name if you are the veterinarian" 
 						data-original-title="Enter your First & Last Name"
-						data-trigger="hover">Your Name</a>
+						data-trigger="hover">Help</a>
 	    		
 										</label>
 	    		<form:input path="requestBy" class="input-medium" title="The name of the peron filling out this form" />

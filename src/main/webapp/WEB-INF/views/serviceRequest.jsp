@@ -74,7 +74,10 @@
 			<form:hidden path="requestNumber"/>
 	
 		<div class="span12">
-			<span style="color: red"> ${serviceRequestMessage} </span>
+			<div class="span12">
+				<div style="color: red; background-color: yellow"> ${serviceRequestMessage} </div>
+				<br/><br/>
+			</div>
 			<%@ include file="hospitalDescription.jsp" %>
 			<%@ include file="patientDescription.jsp" %> 
 			

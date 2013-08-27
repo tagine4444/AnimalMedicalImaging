@@ -1046,6 +1046,14 @@ public class ServiceRequest {
 		{
 			//100y
 			maxLength = 4;
+			
+			boolean shouldbUpdate = false;
+			if(age.length() > indexY)
+			{
+				age = age.substring(0, indexY +1);
+				shouldbUpdate = true;
+			}
+			
 			if(ageLength > maxLength)
 			{
 				return "Age too long";
@@ -1056,6 +1064,10 @@ public class ServiceRequest {
 			if(!StringUtils.isNumeric(numOfY))
 			{
 				return "Invalid age";
+			}
+			if(shouldbUpdate)
+			{
+				setPatientAge(age);
 			}
 			return null;
 		}
@@ -1094,6 +1106,14 @@ public class ServiceRequest {
 		{
 			//31d
 			maxLength = 3;
+			
+			boolean shouldbUpdate = false;
+			if(age.length() > indexD)
+			{
+				age = age.substring(0, indexD +1);
+				shouldbUpdate = true;
+			}
+			
 			if(ageLength > maxLength)
 			{
 				return "Age too long";
@@ -1105,12 +1125,17 @@ public class ServiceRequest {
 			{
 				return "Invalid age";
 			}
+			
+			if(shouldbUpdate)
+			{
+				setPatientAge(age);
+			}
 			return null;
 		}
 		
 		
 		
-		return "Invalid age";
+		return "Invalid age. Missing the time unit. like y for years, m for months, d for days";
 	}
 
 }
