@@ -9,7 +9,7 @@ import com.bouacheria.ami.constants.AMIConstants;
 @Component
 public class ConfigUtil {
 	
-	public final static boolean LOCAL_LOAD_DATA = true;
+	public final static boolean LOCAL_LOAD_DATA = false;
 	public final static boolean PROD_LOAD_DATA  = true;
 	public final static boolean LOCAL_EMAIL_ENABLED = false;
 	
