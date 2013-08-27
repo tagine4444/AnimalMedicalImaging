@@ -9,12 +9,12 @@
 	    		 <br/><form:errors path="veterinarian" cssClass="error" />
    			</div>
    			<div class="span2">
-	    		<label>Requested By 
+	    		<label>
 	    		
 	    		<a id="requestedbyPopover" href="#" data-toggle="popover" tabindex="-1"
-						title="" data-content="Enter your name. This form is requested by you as you are entring the data" 
-						data-original-title="Who is the Requester?"
-						data-trigger="hover">Help</a>
+						title="" data-content="It helps us know who requested this form on behalf of the veterinarian. Please enter your name if you are the veterinarian" 
+						data-original-title="Enter your First & Last Name"
+						data-trigger="hover">Your Name</a>
 	    		
 										</label>
 	    		<form:input path="requestBy" class="input-medium" title="The name of the peron filling out this form" />
