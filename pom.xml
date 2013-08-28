@@ -33,7 +33,7 @@
 	    <connection>scm:git:ssh://github.com/tagine4444/AnimalMedicalImaging.git</connection>
 	    <developerConnection>scm:git:ssh://github.com/tagine4444/AnimalMedicalImaging.git</developerConnection>
 	    <url>https://github.com/tagine4444/AnimalMedicalImaging.git</url>
-	  <tag>ami-2.0.4</tag>
+	  <tag>ami-2.0.5-SNAPSHOT</tag>
   </scm> 
 
 
