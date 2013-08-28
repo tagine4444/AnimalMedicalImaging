@@ -11,7 +11,7 @@ public class ConfigUtil {
 	
 	public final static boolean LOCAL_LOAD_DATA = true;
 	public final static boolean PROD_LOAD_DATA  = true;
-	public final static boolean LOCAL_EMAIL_ENABLED = true;
+	public final static boolean LOCAL_EMAIL_ENABLED = false;
 	
 	@Autowired
 	private Environment env;
