@@ -88,7 +88,8 @@ public class ServiceRequestController {
 		if(StringUtils.isNotEmpty(ageError))
 		{
 			serviceRequestAndCaseHelper.addRefDataToModel(model);
-			model.addAttribute("serviceRequestMessage", ageError+ ". See valid examples in the brackets: [2y] [2y 1m] [1m 3d] [1m] [3d]");
+			model.addAttribute("serviceRequestMessage", "The patient age is Invalid. Click on the Help link next to the Patient Age label for valid examples.");
+			model.addAttribute("ageError", ageError );
 			return "serviceRequest";
 		}
 		if(!serviceRequest.isInterpretationOnly() && !serviceRequest.hasAtLeastOneImagingServie())

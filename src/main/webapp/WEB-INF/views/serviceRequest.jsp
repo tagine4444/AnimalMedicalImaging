@@ -62,10 +62,17 @@
 		</div>
 		
 		<div class="span12">
-			<fieldset>
-				<legend><span style="color:green;"><strong>${serviceRequest.hospitalName}</strong></span></legend>
-			</fieldset>
+			<c:if test="${!empty serviceRequestMessage}"> 
+				<div style="color: red; background-color: yellow; border-style: solid;"> ${serviceRequestMessage} </div>
+				<br/><br/>
+			</c:if>
 		</div>
+		
+<!-- 		<div class="span12"> -->
+<!-- 			<fieldset> -->
+<%-- 				<legend><span style="color:green;"><strong>${serviceRequest.hospitalName}</strong></span></legend> --%>
+<!-- 			</fieldset> -->
+<!-- 		</div> -->
 		
 		<form:form id="form" method="post" modelAttribute="serviceRequest"   >
 		
@@ -74,10 +81,7 @@
 			<form:hidden path="requestNumber"/>
 	
 		<div class="span12">
-			<div class="span12">
-				<div style="color: red; background-color: yellow"> ${serviceRequestMessage} </div>
-				<br/><br/>
-			</div>
+			
 			<%@ include file="hospitalDescription.jsp" %>
 			<%@ include file="patientDescription.jsp" %> 
 			

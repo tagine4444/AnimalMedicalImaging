@@ -1,7 +1,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <div class="row">
+<div class="span12">
 <fieldset>
+	<div class="span12">
 	<div class="span12">
 	<legend>Exam <form:errors path="consultation" cssClass="error" /></legend>
 	
@@ -52,5 +54,7 @@
 		
 	</div>
 	</div>
+	</div>
 </fieldset>
+</div>
 </div>

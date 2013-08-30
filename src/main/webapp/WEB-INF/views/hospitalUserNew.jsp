@@ -93,11 +93,11 @@
 		   		<div class="span12">
 			    	<div class="span3">
 			    		<label>Email</label>
-			    		<form:input  path="userEmail" class="input-large" />
+			    		<form:input  path="email" class="input-large" />
 		   			</div>
 		   			<div class="span5">
 			    		<label>Confirm Email</label>
-			    		<form:input path="userConfirmEmail" class="input-large" />
+			    		<form:input path="confirmEmail" class="input-large" />
 		   			</div> 
 		   		</div>	
 		   		

@@ -77,13 +77,15 @@ $(function() {
 
 <div class="row">
 										
+	<div class="span12">
 	<fieldset>
    		<div class="span12">
-		<legend>Patient Description</legend>
+   		<div class="span12">
+		<legend>Patient</legend>
    		<div class="span12">
 	    	<div class="span2">
 	    		<label>Patient Name </label>
-	    		<form:input path="patientName" class="input-medium" title="Patient Name"/><br/>
+	    		<form:input path="patientName" class="input-medium" title="Patient Name" /><br/>
 	    		<form:errors path="patientName" cssClass="error" />
    			</div>
 <!--    			<div class="span2 age">   -->
@@ -98,7 +100,13 @@ $(function() {
 										
 										
 <%-- 		 		<form:input id="datepicker" path="patientAge" class="input-medium" placeholder="1y3m2d" title="Age Only Select Month and Year" onchange="renderAge(this.value);"/> --%>
-   				<form:input path="patientAge" class="input-medium" title="Patient Age" placeholder="For 2 Years, enter 2y" />
+   				<form:input path="patientAge" class="input-medium" title="Patient Age" placeholder="Refer to Help link" />
+   				
+   				<c:if test="${!empty ageError}"> 
+   					<br/>
+   					<span class="error"> ${ageError}</span>. Click on the Help Link  above for help.
+   				</c:if>
+   				
    			</div>
    		
 	    	<div class="span2">
@@ -144,7 +152,9 @@ $(function() {
 			</div>
    		</div>
    		</div>
+   		</div>
 	</fieldset>
+	</div>
 </div>
 
 

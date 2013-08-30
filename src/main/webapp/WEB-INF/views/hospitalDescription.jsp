@@ -2,7 +2,8 @@
 
 
 <div class="row span12">
-<!--    		<div class="span12"> -->
+   		<div class="span12">
+   		 <legend>Hospital  <span style="color:green;"><strong>(${serviceRequest.hospitalName})</strong></span></legend>	
    			<div class="span2">
 	    		<label>Veterinarian</label>
 	    		<form:input path="veterinarian" class="input-medium" title="Veterinarian" />
@@ -14,11 +15,11 @@
 	    		<a id="requestedbyPopover" href="#" data-toggle="popover" tabindex="-1"
 						title="" data-content="It helps us know who filled out this form on behalf of the veterinarian. 
 						Please enter your name if you are the veterinarian" 
-						data-original-title="Enter your First & Last Name"
+						data-original-title="Your First & Last Name e.g: Sarah Smith"
 						data-trigger="hover">Help</a>
 	    		
 										</label>
-	    		<form:input path="requestBy" class="input-medium" title="The name of the peron filling out this form" />
+	    		<form:input path="requestBy" class="input-medium" title="The name of the peron filling out this form" placeholder="Refer to Help link"/>
    				 <br/><form:errors path="requestBy" cssClass="error" />
    			</div>
    			<div class="span2">
@@ -45,6 +46,6 @@
 	    		<label>Lab Account#</label>
 	    		<form:input path="labAccount" class="input-medium" title="Account#" />
    			</div>
-<!--    		</div> -->
+   		</div>
 <!-- 	</fieldset> -->
 </div>

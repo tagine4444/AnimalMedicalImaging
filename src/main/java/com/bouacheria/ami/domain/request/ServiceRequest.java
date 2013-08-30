@@ -929,6 +929,8 @@ public class ServiceRequest {
 
 
 	public String isValidPatientAge() {
+		
+		final String INVALID_AGE = "Invalid Age";
 		String age = getPatientAge();
 		
 		if(age==null|| age.isEmpty())
@@ -957,7 +959,7 @@ public class ServiceRequest {
 			maxLength = 10;
 			if(ageLength > maxLength)
 			{
-				return "Age too long";
+				return INVALID_AGE;
 			}
 			
 			String numOfY  = age.substring(0,indexY);
@@ -966,7 +968,7 @@ public class ServiceRequest {
 			
 			if(!StringUtils.isNumeric(numOfY) ||!StringUtils.isNumeric(numOfM)||!StringUtils.isNumeric(numOfD))
 			{
-				return "Invalid age";
+				return INVALID_AGE;
 			}
 			return null;
 		}
@@ -976,13 +978,13 @@ public class ServiceRequest {
 			maxLength = 6;
 			if(ageLength > maxLength)
 			{
-				return "Age too long";
+				return INVALID_AGE;
 			}
 			
 			boolean daysBeforeMonths= indexD < indexM;
 			if(daysBeforeMonths)
 			{
-				return "The Months must come after the Days";
+				return "Months must come after days";
 			}
 			
 			String numOfM = age.substring(0,indexM);
@@ -990,7 +992,7 @@ public class ServiceRequest {
 			
 			if(!StringUtils.isNumeric(numOfM)||!StringUtils.isNumeric(numOfD))
 			{
-				return "Invalid age";
+				return INVALID_AGE;
 			}
 			return null;
 		}
@@ -1000,13 +1002,13 @@ public class ServiceRequest {
 			maxLength = 7;
 			if(ageLength > maxLength)
 			{
-				return "Age too long";
+				return INVALID_AGE;
 			}
 			
 			boolean monthBeforeYears = indexM < indexY;
 			if(monthBeforeYears)
 			{
-				return "The Years must come after the months";
+				return "Years must come after months";
 			}
 			
 			String numOfY = age.substring(0,indexY);
@@ -1014,7 +1016,7 @@ public class ServiceRequest {
 			
 			if(!StringUtils.isNumeric(numOfY)||!StringUtils.isNumeric(numOfM))
 			{
-				return "Invalid age";
+				return INVALID_AGE;
 			}
 			return null;
 		}
@@ -1024,13 +1026,18 @@ public class ServiceRequest {
 			maxLength = 7;
 			if(ageLength > maxLength)
 			{
-				return "Age too long";
+				return INVALID_AGE;
 			}
 			
 			boolean daysBeforeYears= indexD < indexY;
 			if(daysBeforeYears)
 			{
-				return "The Years must come after the Days";
+				if(age.toLowerCase().indexOf("days")>0)
+				{
+					return INVALID_AGE;
+				}
+				
+				return "Years must come after days";
 			}
 			
 			String numOfY = age.substring(0,indexY);
@@ -1038,7 +1045,7 @@ public class ServiceRequest {
 			
 			if(!StringUtils.isNumeric(numOfY)||!StringUtils.isNumeric(numOfD))
 			{
-				return "Invalid age";
+				return INVALID_AGE;
 			}
 			return null;
 		}
@@ -1056,14 +1063,14 @@ public class ServiceRequest {
 			
 			if(ageLength > maxLength)
 			{
-				return "Age too long";
+				return INVALID_AGE;
 			}
 			
 			String numOfY = age.substring(0,indexY);
 			
 			if(!StringUtils.isNumeric(numOfY))
 			{
-				return "Invalid age";
+				return INVALID_AGE;
 			}
 			if(shouldbUpdate)
 			{
@@ -1086,14 +1093,14 @@ public class ServiceRequest {
 			
 			if(ageLength > maxLength)
 			{
-				return "Age too long";
+				return INVALID_AGE;
 			}
 			
 			String numOfM = age.substring(0,indexM);
 			
 			if(!StringUtils.isNumeric(numOfM))
 			{
-				return "Invalid age";
+				return INVALID_AGE;
 			}
 			
 			if(shouldbUpdate)
@@ -1116,14 +1123,14 @@ public class ServiceRequest {
 			
 			if(ageLength > maxLength)
 			{
-				return "Age too long";
+				return INVALID_AGE;
 			}
 			
 			String numOfD = age.substring(0,indexD);
 			
 			if(!StringUtils.isNumeric(numOfD))
 			{
-				return "Invalid age";
+				return INVALID_AGE;
 			}
 			
 			if(shouldbUpdate)
@@ -1135,7 +1142,7 @@ public class ServiceRequest {
 		
 		
 		
-		return "Invalid age. Missing the time unit. like y for years, m for months, d for days";
+		return "Missing the time unit y (years), m (months), d (days)";
 	}
 
 }
