@@ -84,6 +84,13 @@ public class ClientAttribute {
 	public Contact getContact() {
 		return contact;
 	}
+	public Contact getContactNotNull() {
+		if(contact==null)
+		{
+			return new Contact();
+		}
+		return contact;
+	}
 
 	public void setContact(Contact contact) {
 		this.contact = contact;

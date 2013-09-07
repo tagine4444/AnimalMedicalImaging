@@ -3,8 +3,6 @@ package com.bouacheria.ami.domain.datatype;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
-import org.springframework.format.annotation.NumberFormat;
-
 @Embeddable
 public class Contact {
 	

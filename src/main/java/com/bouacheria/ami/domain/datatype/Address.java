@@ -39,6 +39,15 @@ public class Address {
 	@Column(name=COUNTRY_COL, nullable = true, length=150)
 	private String country = null;
 	
+	
+	public String getFormattedAddress()
+	{
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append(address==null?"":address + " " + city==null?"":city+" "+ (zip==0?"":zip) +" "+stateProvince==null?"":stateProvince + " "+country==null?"":country);
+		
+		return sb.toString();
+	}
 	public String getAddress() {
 		return address;
 	}

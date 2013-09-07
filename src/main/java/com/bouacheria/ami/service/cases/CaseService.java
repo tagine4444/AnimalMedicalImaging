@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bouacheria.ami.domain.cases.Case;
-import com.bouacheria.ami.domain.request.ServiceRequest;
 import com.bouacheria.ami.repository.cases.CaseRepository;
 
 @Service

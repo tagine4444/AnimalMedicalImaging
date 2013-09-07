@@ -1,5 +1,7 @@
 package com.bouacheria.ami.domain.cases;
 
+import java.util.Locale;
+
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -9,8 +11,11 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import net.sf.cglib.core.Local;
+
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
+import org.springframework.format.datetime.DateFormatter;
 
 import com.bouacheria.ami.domain.Services;
 import com.bouacheria.ami.domain.client.ClientAttribute;
@@ -728,6 +733,15 @@ public class Case
 
 	public DateTime getReadingInProgressDate() {
 		return readingInProgressDate;
+	}
+	
+	public String format(DateTime date)
+	{
+		if(date==null)
+		{
+			return "";
+		}
+		return date.toString("dd MMM yyyy hh:ss");
 	}
 
 

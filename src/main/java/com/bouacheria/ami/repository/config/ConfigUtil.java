@@ -1,5 +1,9 @@
 package com.bouacheria.ami.repository.config;
 
+import java.util.Properties;
+
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
@@ -9,13 +13,22 @@ import com.bouacheria.ami.constants.AMIConstants;
 @Component
 public class ConfigUtil {
 	
-	public final static boolean LOCAL_LOAD_DATA = true;
-	public final static boolean PROD_LOAD_DATA  = true;
-	public final static boolean LOCAL_EMAIL_ENABLED = true;
+	
+//	public final static boolean LOCAL_LOAD_DATA = false;
+//	public final static boolean PROD_LOAD_DATA  = true;
+	//public final static boolean LOCAL_EMAIL_ENABLED = false;
 	
 	@Autowired
 	private Environment env;
+
+	@Resource(name = "amiProperties")
+	private Properties amiProperties;
 	
+	
+	public Properties amiProperties() {
+		return amiProperties;
+	}
+
 	
 	public boolean hasHbm2ddl()
 	{
@@ -31,6 +44,19 @@ public class ConfigUtil {
 	{
 		return (String)System.getProperty("hbm2ddl");
 	}
+	
+	public String getLocalEmailOn()
+	{
+		return (String)System.getProperty("localemailon");
+	}
+	
+	public boolean isLocalEmailOn()
+	{
+		String localEmailOn = getLocalEmailOn();
+		return Boolean.getBoolean(localEmailOn);
+	}
+	
+	
 	
 	public String getActiveProfile()
 	{
@@ -52,7 +78,8 @@ public class ConfigUtil {
 		//set default for prod, should always be true in prod
 		if(isLocalProfile())
 		{
-			return LOCAL_EMAIL_ENABLED;
+			return isLocalEmailOn();
+			//return LOCAL_EMAIL_ENABLED;
 		}
 		return true;
 	}
@@ -60,18 +87,35 @@ public class ConfigUtil {
 	
 	public boolean isLoadData()
 	{
-		if(isLocalProfile())
+		if(!hasHbm2ddl())
 		{
-			return LOCAL_LOAD_DATA ;
+			return false;
 		}
 		
-		return PROD_LOAD_DATA;
+		if( getHbm2ddl().toLowerCase().contains("create"))
+		{
+			return true;
+		}
+		return false;
+		
+			
+//		if(isLocalProfile())
+//		{
+//			return LOCAL_LOAD_DATA ;
+//		}
+//		
+//		return PROD_LOAD_DATA;
 	}
 
 
 	public String getAmiEmail() {
 		return env.getProperty("ami.email");
 		//return email;
+	}
+	
+	public String getPdfFilesPath()
+	{
+		return this.amiProperties.getProperty("upload.pdftmp");
 	}
 	
 	public String toString()

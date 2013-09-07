@@ -11,6 +11,7 @@ import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -261,6 +262,13 @@ public class CaseController {
 				
 			String hospitalEmail =dbCase.getHospitalAttribute().getContact().getEmail();
 			String emailTo = emailService.getTo(hospitalEmail);
+			FileSystemResource pdf = null;
+			try {
+				pdf = pdfGen.getPdf(aCase);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}	
+			
 		if(config.isEmailEnabled())
 		{
 			emailService.sendMail(emailFrom, emailTo,  "Your Request" + serviceReq.getRequestNumber() +" is ready" , getEmailBody(serviceReq) );
