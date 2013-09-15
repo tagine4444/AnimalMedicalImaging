@@ -15,6 +15,7 @@ public class ClientAttribute {
 	public final static String SEPARATOR = "CLIENT_";
 	private final static String EMAIL 	 		= SEPARATOR + Contact.EMAIL_COL ;
 	private final static String CELL 	 		= SEPARATOR + Contact.CELL_COL;
+	private final static String HOME_PHONE 	 		= SEPARATOR + Contact.HOMEPHONE_COL;
 	private final static String OFFICE 	 		= SEPARATOR + Contact.OFFICE_COL;
 	private final static String BACKLINE 		= SEPARATOR + Contact.BACKLINE_COL;
 	private final static String FAX 	 			= SEPARATOR + Contact.FAX_COL;
@@ -36,10 +37,16 @@ public class ClientAttribute {
 	@Column(name="LAST_NAME", nullable = true , length=200)
 	private String lastName = null;
 	
+	@Column(name="HOSPITAL_EMPLOYEE")
+	private boolean hospitalEmployee = false; //default value for the UI.
+	
+	
+
 	@Embedded
 	@AttributeOverrides({
 	        @AttributeOverride(name=Contact.CONTACT_EMAIL, column=@Column(name=EMAIL )),
 	        @AttributeOverride(name=Contact.CONTACT_CELL, column=@Column(name=CELL)),
+	        @AttributeOverride(name=Contact.CONTACT_HOME_PHONE, column=@Column(name=HOME_PHONE)),
 	        @AttributeOverride(name=Contact.CONTACT_OFFICE, column=@Column(name=OFFICE)),
 	        @AttributeOverride(name=Contact.CONTACT_BACKLINE, column=@Column(name=BACKLINE)),
 	        @AttributeOverride(name=Contact.CONTACT_FAX, column=@Column(name=FAX))
@@ -112,4 +119,13 @@ public class ClientAttribute {
 		this.address = address;
 	}
 
+	public boolean isHospitalEmployee()
+	{
+		return hospitalEmployee;
+	}
+
+	public void setHospitalEmployee(boolean hospitalEmployee)
+	{
+		this.hospitalEmployee = hospitalEmployee;
+	}
 }

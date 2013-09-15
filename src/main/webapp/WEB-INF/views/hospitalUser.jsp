@@ -18,6 +18,7 @@
 	<script src="${resourcesUrl}/media/js/jquery-1.8.3.js"></script>
 	<script src="${resourcesUrl}/media/js/jquery-ui-1.9.2.custom.js"></script>
 	<script src="${resourcesUrl}/media/js/serviceRequest.js"></script>	
+	<link rel="stylesheet" href="${resourcesUrl}/media/css/ami.css" />
 <style>
 .error 
 {
@@ -109,8 +110,11 @@
 		   		</div>	
 		   		
 		   		<div class="span12">
-		   			<div class="span2">
+		   			<div class="span1">
 		   				<button type="submit" name="updateUser" class="btn">Submit</button>
+	   				</div>
+		   			<div class="span1">
+		   				<button type="submit" onclick="history.go(-1);return false;" name="updateUser" class="btn">Cancel</button>
 	   				</div>
 		   		</div>
 		   		

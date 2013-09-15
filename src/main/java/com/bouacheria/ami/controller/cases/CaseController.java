@@ -262,17 +262,35 @@ public class CaseController {
 				
 			String hospitalEmail =dbCase.getHospitalAttribute().getContact().getEmail();
 			String emailTo = emailService.getTo(hospitalEmail);
-			FileSystemResource pdf = null;
-			try {
-				pdf = pdfGen.getPdf(aCase);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}	
+//			FileSystemResource pdf = null;
+//			try {
+//				pdf = pdfGen.getPdf(aCase);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}	
 			
 		if(config.isEmailEnabled())
 		{
-			emailService.sendMail(emailFrom, emailTo,  "Your Request" + serviceReq.getRequestNumber() +" is ready" , getEmailBody(serviceReq) );
-			pdfGen.emailPdf(dbCase,emailFrom, emailTo,  "Your Request" + serviceReq.getRequestNumber() +" is ready" , getEmailBody(serviceReq) );
+			try
+			{
+				emailService.sendMail(emailFrom, emailTo,  "Your Request" + serviceReq.getRequestNumber() +" is ready" , getEmailBody(serviceReq) );
+			}
+			catch (Exception e)
+			{
+				model.addAttribute("error", "Customer will not get the email notification. Error: " + e.getMessage());
+				e.printStackTrace();
+			}
+			
+			try
+			{
+				pdfGen.emailPdf(dbCase,emailFrom, emailTo,  "Your Request" + serviceReq.getRequestNumber() +" is ready" , getEmailBody(serviceReq) );
+			}
+			catch (Exception e)
+			{
+				model.addAttribute("error", "Customer will not get the PDF report email. Error: " + e.getMessage());
+				e.printStackTrace();
+			}
+			
 		}
 		
 		return "redirect:caseDashboard";

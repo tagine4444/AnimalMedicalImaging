@@ -2,26 +2,26 @@ package com.bouacheria.ami.domain.datatype;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.validation.constraints.Min;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Embeddable
 public class Weight {
 
-	@NotEmpty
+	@NotBlank
 	@Column(name="WEIGHT")
-	private double value;
+	private String value;
 	
 	@NotEmpty
 	@Column(name="UOM")
 	private String uom;
 
-	public double getValue() {
+	public String getValue() {
 		return value;
 	}
 
-	public void setValue(double value) {
+	public void setValue(String value) {
 		this.value = value;
 	}
  

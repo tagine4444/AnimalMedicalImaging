@@ -15,6 +15,7 @@ public class HospitalAttribute {
 	public final static String SEPARATOR 		= "HOSP_";
 	private final static String EMAIL 	 		= SEPARATOR + Contact.EMAIL_COL ;
 	private final static String CELL 	 		= SEPARATOR + Contact.CELL_COL;
+	private final static String HOME_PHONE 	 	= SEPARATOR + Contact.HOMEPHONE_COL;
 	private final static String OFFICE 	 		= SEPARATOR + Contact.OFFICE_COL;
 	private final static String BACKLINE 		= SEPARATOR + Contact.BACKLINE_COL;
 	private final static String FAX 	 			= SEPARATOR + Contact.FAX_COL;
@@ -46,6 +47,7 @@ public class HospitalAttribute {
 	@AttributeOverrides({
 	        @AttributeOverride(name=Contact.CONTACT_EMAIL, column=@Column(name=EMAIL )),
 	        @AttributeOverride(name=Contact.CONTACT_CELL, column=@Column(name=CELL)),
+	        @AttributeOverride(name=Contact.CONTACT_HOME_PHONE, column=@Column(name=HOME_PHONE)),
 	        @AttributeOverride(name=Contact.CONTACT_OFFICE, column=@Column(name=OFFICE)),
 	        @AttributeOverride(name=Contact.CONTACT_BACKLINE, column=@Column(name=BACKLINE)),
 	        @AttributeOverride(name=Contact.CONTACT_FAX, column=@Column(name=FAX))

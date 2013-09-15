@@ -42,18 +42,18 @@ public class ConfigUtil {
 	
 	public String getHbm2ddl()
 	{
-		return (String)System.getProperty("hbm2ddl");
+		return env.getProperty("hbm2ddl");
 	}
 	
 	public String getLocalEmailOn()
 	{
-		return (String)System.getProperty("localemailon");
+		return env.getProperty("localemailon");
 	}
 	
 	public boolean isLocalEmailOn()
 	{
 		String localEmailOn = getLocalEmailOn();
-		return Boolean.getBoolean(localEmailOn);
+		return Boolean.parseBoolean(localEmailOn);
 	}
 	
 	
@@ -125,7 +125,7 @@ public class ConfigUtil {
 		sb.append("[Is Email Enabled :"+ isEmailEnabled()+" ]\n");
 		sb.append("[Is Load Data     :"+ isLoadData()+" ]\n");
 		sb.append("[Hbm2ddl          :"+ getHbm2ddl()+" ]\n");
-		sb.append("[AMI Email          :"+ getAmiEmail()+" ]\n");
+		sb.append("[AMI Email        :"+ getAmiEmail()+" ]\n");
 		
 		return sb.toString();
 	

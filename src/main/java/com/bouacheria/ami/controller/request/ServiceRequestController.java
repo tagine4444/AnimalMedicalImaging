@@ -1,6 +1,5 @@
 package com.bouacheria.ami.controller.request;
 
-import javax.jws.HandlerChain;
 import javax.validation.Valid;
 
 import org.apache.commons.lang.StringUtils;
@@ -61,6 +60,7 @@ public class ServiceRequestController {
 	{
 		ServiceRequest request = new ServiceRequest();
 		request.setHospitalAttribute(securityUtil.getHospitalForLoggedinUser().getHospitalAttribute());
+		request.setUnderContract(securityUtil.getHospitalForLoggedinUser().isUnderContract());
 		return request;
 	}
 	

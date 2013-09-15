@@ -298,12 +298,49 @@ public class ServiceRequest {
 		this.examAttribute.setEuthanized(euthanized);
 	}
 	
+	@Transient
 	public String getClientId() {
 		return clientAttribute.getClientId();
 	}
 
 	public void setClientId(String clientId) {
 		this.clientAttribute.setClientId(clientId);
+	}
+	
+	@Transient
+	public String getClientAddress() {
+		return clientAttribute.getAddress().getAddress();
+	}
+	
+	public void setClientAddress(String clientAddress) {
+		this.clientAttribute.getAddress().setAddress(clientAddress);
+	}
+	
+	@Transient
+	public String getClientCell() {
+		return clientAttribute.getContact().getCell();
+	}
+	
+	public void setClientCell(String clientCell) {
+		this.clientAttribute.getContact().setCell(clientCell);
+	}
+	
+	@Transient
+	public String getClientHomePhone() {
+		return clientAttribute.getContact().getHomePhone();
+	}
+	
+	public void setClientHomePhone(String homePhone) {
+		this.clientAttribute.getContact().setHomePhone(homePhone);
+	}
+	
+	@Transient
+	public boolean getClientHospitalEmployee() {
+		return clientAttribute.isHospitalEmployee();
+	}
+	
+	public void setClientHospitalEmployee(boolean hospitalEmployee) {
+		this.clientAttribute.setHospitalEmployee(hospitalEmployee);
 	}
 	
 	@Transient
@@ -522,14 +559,14 @@ public class ServiceRequest {
 	}
 
 	
-	@Min(value=1)
+	@NotEmpty(message="may not be empty")
 	@Transient
-	public double getPatientWeight() {
+	public String getPatientWeight() {
 		return this.petAttribute.getWeight().getValue();
 	}
 
 	@Transient
-	public void setPatientWeight(double weight) {
+	public void setPatientWeight(String weight) {
 		this.petAttribute.getWeight().setValue(weight);
 	}
 	

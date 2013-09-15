@@ -610,12 +610,12 @@ public class Case
 	}
 
 	@Transient
-	public double getPatientWeight() {
+	public String getPatientWeight() {
 		return this.petAttribute.getWeight().getValue();
 	}
 
 	@Transient
-	public void setPatientWeight(double weight) {
+	public void setPatientWeight(String weight) {
 		this.petAttribute.getWeight().setValue(weight);
 	}
 	

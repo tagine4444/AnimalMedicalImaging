@@ -7,6 +7,7 @@
 <c:url value="/" var="rootUrl"/>
 <c:url value="/resources" var="resourcesUrl"/>
 
+
 <html>
 	<head>
 		<title>Animal Medical Imaging</title>
@@ -16,7 +17,8 @@
 		
 		 
 		<script src="${resourcesUrl}/media/js/jquery-1.8.3.js"></script>	
-		<script src="${resourcesUrl}/media/js/serviceRequest.js"></script>	
+		<script src="${resourcesUrl}/media/js/serviceRequest.js"></script>
+		<link rel="stylesheet" href="${resourcesUrl}/media/css/ami.css" />	
 		
 		<style>
 		.error {
