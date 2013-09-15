@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Properties;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
 import org.joda.time.DateTime;
@@ -242,7 +243,7 @@ public class CaseController {
 	}
 	
 	@RequestMapping(value = "/case", method = RequestMethod.POST, params ="saveTranscribed")
-	public String saveTransription( Model model, @ModelAttribute Case aCase) 
+	public String saveTransription( Model model, @ModelAttribute Case aCase,HttpServletRequest request) 
 	{
 		Case dbCase = caseService.findById(aCase.getId());
 		dbCase.setRadioImpression(aCase.getRadioImpression());
@@ -283,7 +284,7 @@ public class CaseController {
 			
 			try
 			{
-				pdfGen.emailPdf(dbCase,emailFrom, emailTo,  "Your Request" + serviceReq.getRequestNumber() +" is ready" , getEmailBody(serviceReq) );
+				pdfGen.emailPdf(dbCase,emailFrom, emailTo,  "Your Request" + serviceReq.getRequestNumber() +" is ready" , getEmailBody(serviceReq), request );
 			}
 			catch (Exception e)
 			{
@@ -379,7 +380,7 @@ public class CaseController {
 	}
 	
 	@RequestMapping(value = "/emailPdf", method = RequestMethod.GET, params ="caseId")
-	public String emailPdf( Model model, @RequestParam long caseId) 
+	public String emailPdf( Model model, @RequestParam long caseId,HttpServletRequest request) 
 	{
 		Case aCase = caseService.findById(caseId);
 		
@@ -393,7 +394,7 @@ public class CaseController {
 			return "emailConfirm";
 		}
 		String emailTo = aCase.getHospitalAttribute().getContact().getEmail();
-		pdfGen.emailPdf(aCase,emailFrom, user.getEmail(),  "Your Request" + aCase.getRequestNumber() +" is ready" , getEmailBody(aCase) );
+		pdfGen.emailPdf(aCase,emailFrom, user.getEmail(),  "Your Request" + aCase.getRequestNumber() +" is ready" , getEmailBody(aCase),request );
 		model.addAttribute("caseMsg", "Interpretation for request "+aCase.getRequestNumber()+" has been emailed to " + emailTo);
 		return "emailConfirm";
 	}

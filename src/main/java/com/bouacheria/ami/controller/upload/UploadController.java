@@ -1,9 +1,7 @@
 package com.bouacheria.ami.controller.upload;
 
 import java.io.File;
-import java.util.Properties;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +24,8 @@ import com.bouacheria.ami.service.uploads.UploadsService;
 @Controller
 public class UploadController {
 
-	@Resource(name = "amiProperties")
-	private Properties amiProperties;
+//	@Resource(name = "amiProperties")
+//	private Properties amiProperties;
 	
 	@Autowired
 	private ServiceRequestService serviceRequestService;
@@ -71,7 +69,7 @@ public class UploadController {
 		try 
 		{
 			//String uploadPath = (String)amiProperties.get("upload.path");
-			String uploadPath = request.getSession().getServletContext().getRealPath("/uploads");
+			String uploadPath = request.getSession().getServletContext().getRealPath("/upload");
 			
 			String originalFilename = uploadItem.getFileData().getOriginalFilename();
 			

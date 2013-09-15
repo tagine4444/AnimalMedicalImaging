@@ -3,6 +3,8 @@ package com.bouacheria.ami.service.cases;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.stereotype.Service;
@@ -59,13 +61,13 @@ public class PdfGenerator
 //		
 //		return inputStreamSrc;
 //	}
-	public void emailPdf(Case aCase, String from, String to, String subject, String msg) {
+	public void emailPdf(Case aCase, String from, String to, String subject, String msg, HttpServletRequest request) {
 		
 		final String pdfFileNameOnly = getPdfFileNameOnly(aCase.getRequestNumber());
 		
 		try
 		{
-			FileSystemResource inputStreamSrc = pdfBuilder.getPdf(aCase);
+			FileSystemResource inputStreamSrc = pdfBuilder.getPdf(aCase, request);
 			
 			if (SAVE_PDF_TO_DISK)
 			{
