@@ -248,7 +248,7 @@ public class CaseController {
 		
 		String contextPath = request.getContextPath();
 		System.out.println(contextPath);
-		
+		 
 		
 		Case dbCase = caseService.findById(aCase.getId());
 		dbCase.setRadioImpression(aCase.getRadioImpression());
