@@ -245,6 +245,11 @@ public class CaseController {
 	@RequestMapping(value = "/case", method = RequestMethod.POST, params ="saveTranscribed")
 	public String saveTransription( Model model, @ModelAttribute Case aCase,HttpServletRequest request) 
 	{
+		
+		String contextPath = request.getContextPath();
+		System.out.println(contextPath);
+		
+		
 		Case dbCase = caseService.findById(aCase.getId());
 		dbCase.setRadioImpression(aCase.getRadioImpression());
 		dbCase.setRecommendations(aCase.getRecommendations());
@@ -272,6 +277,7 @@ public class CaseController {
 			
 		if(config.isEmailEnabled())
 		{
+			System.out.println("Email is enabled. emailing pdf for request " +serviceReq.getRequestNumber());
 			try
 			{
 				emailService.sendMail(emailFrom, emailTo,  "Your Request" + serviceReq.getRequestNumber() +" is ready" , getEmailBody(serviceReq) );

@@ -18,6 +18,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import com.bouacheria.ami.domain.request.ServiceRequest;
 import com.bouacheria.ami.domain.uploads.Uploads;
 import com.bouacheria.ami.security.SecurityUtil;
+import com.bouacheria.ami.service.amiservice.AmiServiceServiceCached;
 import com.bouacheria.ami.service.request.ServiceRequestService;
 import com.bouacheria.ami.service.uploads.UploadsService;
 
@@ -35,6 +36,9 @@ public class UploadController {
 
 	@Autowired
 	private SecurityUtil securityUtil;
+
+	@Autowired
+	private AmiServiceServiceCached cache;
 	
 	@ModelAttribute("uploadItem")
 	public UploadItem createUploadItem() 
@@ -68,14 +72,14 @@ public class UploadController {
 		
 		try 
 		{
-			//String uploadPath = (String)amiProperties.get("upload.path");
-			String uploadPath = request.getSession().getServletContext().getRealPath("/upload");
+			//String uploadPath = request.getSession().getServletContext().getRealPath("/upload");
+			String uploadPath = cache.getUploadDirectory();
 			
 			String originalFilename = uploadItem.getFileData().getOriginalFilename();
 			
 			String fileName = uploadItem.getRequestNumber() + originalFilename;
-			String goodUploadPath1 = uploadPath.replace("/", File.separator);
-			String fileNameAndPath = goodUploadPath1+ File.separator+fileName;
+			//String goodUploadPath1 = uploadPath.replace("/", File.separator);
+			String fileNameAndPath = uploadPath +fileName;
 			fileData.transferTo(new File(fileNameAndPath));
 			
 			

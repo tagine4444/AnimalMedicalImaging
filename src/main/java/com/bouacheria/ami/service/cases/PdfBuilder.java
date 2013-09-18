@@ -3,15 +3,18 @@ package com.bouacheria.ami.service.cases;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.stereotype.Service;
 
 import com.bouacheria.ami.domain.cases.Case;
 import com.bouacheria.ami.repository.config.ConfigUtil;
+import com.bouacheria.ami.service.amiservice.AmiServiceServiceCached;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Paragraph;
@@ -26,7 +29,12 @@ public class PdfBuilder
 	
 	@Autowired
 	private PdfComponentBuilder pdfComponentBuilder;
-
+	
+	
+	@Autowired
+	private AmiServiceServiceCached cache;
+	
+	
 	
 	
 	// iText allows to add metadata to the PDF which can be viewed in your Adobe
@@ -53,15 +61,10 @@ public class PdfBuilder
 
 	public String getPdfFileWithPath(String caseNumber, HttpServletRequest request)
 	{
-		String pdfPath = request.getSession().getServletContext().getRealPath("/pdftmp");
-		
-		
 		String fileName = getPdfFileNameOnly(caseNumber);
-		String goodUploadPath1 = pdfPath.replace("/", File.separator);
-		String fileNameAndPath = goodUploadPath1+ File.separator+fileName;
+		String fileNameAndPath = cache.getPdfDirectory()+ fileName;
 		
 		return fileNameAndPath;
-		//return config.getPdfFilesPath() + File.separatorChar + getPdfFileNameOnly(caseNumber);
 	}
 
 	public String getPdfFileNameOnly(String caseNumber)

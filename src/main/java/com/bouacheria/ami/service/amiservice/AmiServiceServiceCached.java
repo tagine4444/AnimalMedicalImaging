@@ -1,5 +1,6 @@
 package com.bouacheria.ami.service.amiservice;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
 import com.bouacheria.ami.domain.amiservices.AmiFee;
@@ -52,6 +54,10 @@ public class AmiServiceServiceCached {
 	private List<AmiService> contrastRadiographyAmiServiceList;
 	private List<AmiService> computedTomographyAmiServiceList;
 	private List<AmiService> MRIAmiServiceList;
+	
+	private String pdfDirectory;
+	private String uploadDirectory;
+	
 	//private AmiService miscAmiService;
 	
 	private List<String> serviceCategories;
@@ -131,6 +137,23 @@ public class AmiServiceServiceCached {
 		this.computedTomographyAmiServiceList = cache.get(AmiServiceCategory.COMPUTEDTOMOGRAPHY);
 		this.MRIAmiServiceList = cache.get(AmiServiceCategory.MRI);
 		this.interpretationOnlyAmiServiceList =  cache.get(AmiServiceCategory.INTERPRETATION_ONLY);
+		
+		try
+		{
+			
+			String filePath =  new ClassPathResource("pdftmp/pdfPath.txt").getURL().getPath();
+			this.pdfDirectory = filePath.substring(0, filePath.length() - "pdfPath.txt".length());
+			
+			String uploadFilePath =  new ClassPathResource("uploads/uploadPath.txt").getURL().getPath();
+			this.uploadDirectory  = uploadFilePath.substring(0, uploadFilePath.length() - "uploadPath.txt".length());
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		
+		System.out.println("PDF DIRECTORY: >>>>> '"+ pdfDirectory+"'");
+		System.out.println("UPLOAD DIRECTORY: >>>>> '"+ uploadDirectory+"'");
 		
 	}
 	
@@ -337,5 +360,13 @@ public class AmiServiceServiceCached {
 		return allServices;
 	}
 
-	
+	public String getPdfDirectory()
+	{
+		return pdfDirectory;
+	}
+
+	public String getUploadDirectory()
+	{
+		return uploadDirectory;
+	}
 }
