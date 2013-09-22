@@ -10,6 +10,7 @@ public enum AmiServiceCategory {
 	CONTRASTEDRADIOGRAPHY("CONTRASTEDRADIOGRAPHY", "Contrasted Radiography"),
 	MILAGE_FEE("MILAGE_FEE","Milage Fee"),
 	LATE_PAYMENT_FEE("LATE_PAYMENT_FEE", "Late Payment Fee"),
+	EMPLOYEE_DISCOUNT("EMPLOYEE_DISCOUNT", "Employee Discount"),
 	MISC_SERVICE("MISC_SERVICE", "Miscellenous Service");
 	
 	private final String code;

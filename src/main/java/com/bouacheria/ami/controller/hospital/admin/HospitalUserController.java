@@ -2,7 +2,6 @@ package com.bouacheria.ami.controller.hospital.admin;
 
 import java.util.List;
 
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.bouacheria.ami.controller.AbstractAmiController;
 import com.bouacheria.ami.controller.ServiceRequestAndCaseHelper;
 import com.bouacheria.ami.domain.hospital.Hospital;
 import com.bouacheria.ami.domain.users.AMIUser;
@@ -21,7 +21,7 @@ import com.bouacheria.ami.service.hospital.HospitalService;
 import com.bouacheria.ami.service.users.UserService;
 
 @Controller
-public class HospitalUserController {
+public class HospitalUserController extends AbstractAmiController{
 	
 	@Autowired
 	private SecurityUtil securityUtil;

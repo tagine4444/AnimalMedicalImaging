@@ -13,13 +13,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.bouacheria.ami.controller.AbstractAmiController;
 import com.bouacheria.ami.domain.request.SearchRequest;
 import com.bouacheria.ami.domain.request.ServiceRequest;
 import com.bouacheria.ami.security.SecurityUtil;
 import com.bouacheria.ami.service.request.ServiceRequestService;
 
 @Controller
-public class SearchRequestAmiController {
+public class SearchRequestAmiController extends AbstractAmiController{
 	
 
 	@Autowired

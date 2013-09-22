@@ -10,13 +10,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.bouacheria.ami.controller.AbstractAmiController;
 import com.bouacheria.ami.controller.request.ServiceRequestController;
 import com.bouacheria.ami.domain.cases.Case;
 import com.bouacheria.ami.domain.request.ServiceRequest;
 import com.bouacheria.ami.service.cases.CaseService;
 
 @Controller
-public class CaseDashboardController {
+public class CaseDashboardController extends AbstractAmiController{
 
 private static final Logger logger = LoggerFactory.getLogger(ServiceRequestController.class);
 	

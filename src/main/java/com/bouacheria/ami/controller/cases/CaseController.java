@@ -12,7 +12,6 @@ import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -20,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.bouacheria.ami.controller.AbstractAmiController;
 import com.bouacheria.ami.controller.ServiceRequestAndCaseHelper;
 import com.bouacheria.ami.controller.request.ServiceRequestController;
 import com.bouacheria.ami.domain.amiservices.AmiCharge;
@@ -41,7 +41,7 @@ import com.bouacheria.ami.service.request.ServiceRequestService;
 import com.bouacheria.ami.service.users.UserService;
 
 @Controller
-public class CaseController {
+public class CaseController extends AbstractAmiController{
 
 	
 	private static final Logger logger = LoggerFactory.getLogger(ServiceRequestController.class);
@@ -156,7 +156,8 @@ public class CaseController {
 		{
 			Map<AmiServiceCategory, String> serviceMap = serviceReq.getSelectedImagingServices();
 			List<AmiService> selectedImagingServices = cachedServicesService.getSelectedImagingServices(serviceMap);
-			amiCharges = amiChargeService.getChargesFromService(selectedImagingServices ,savedCase.getId(), serviceReq.getId());
+			amiCharges = amiChargeService.getChargesFromService(selectedImagingServices ,savedCase);
+			
 			amiChargeService.save(amiCharges);
 			
 			AmiChargeTotal total = amiChargeService.getTotal(amiCharges, savedCase.getId());

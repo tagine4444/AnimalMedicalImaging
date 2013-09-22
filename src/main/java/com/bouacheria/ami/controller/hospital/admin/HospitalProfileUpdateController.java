@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.bouacheria.ami.controller.AbstractAmiController;
 import com.bouacheria.ami.controller.ServiceRequestAndCaseHelper;
 import com.bouacheria.ami.domain.hospital.Hospital;
 import com.bouacheria.ami.domain.users.AMIUser;
@@ -18,7 +19,7 @@ import com.bouacheria.ami.service.hospital.HospitalService;
 import com.bouacheria.ami.service.users.UserService;
 
 @Controller
-public class HospitalProfileUpdateController {
+public class HospitalProfileUpdateController extends AbstractAmiController{
 	
 	@Autowired
 	private SecurityUtil securityUtil;

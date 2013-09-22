@@ -940,5 +940,10 @@ public class Case
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
+	
+	public boolean getHospitalEmployee()
+	{
+		return this.clientAttribute.isHospitalEmployee();
+	}
 
 }

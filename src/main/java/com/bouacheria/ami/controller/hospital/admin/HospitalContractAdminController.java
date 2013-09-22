@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.bouacheria.ami.controller.AbstractAmiController;
 import com.bouacheria.ami.domain.hospital.Hospital;
 import com.bouacheria.ami.domain.hospital.HospitalContractAdmin;
 import com.bouacheria.ami.domain.request.RequestSequence;
@@ -19,7 +20,7 @@ import com.bouacheria.ami.service.request.RequestSequenceService;
 import com.bouacheria.ami.service.users.UserService;
 
 @Controller
-public class HospitalContractAdminController 
+public class HospitalContractAdminController extends AbstractAmiController
 {
 	
 	@Autowired

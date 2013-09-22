@@ -9,12 +9,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.bouacheria.ami.controller.AbstractAmiController;
 import com.bouacheria.ami.domain.Interpretation;
 import com.bouacheria.ami.domain.request.ServiceRequest;
 import com.bouacheria.ami.service.request.ServiceRequestService;
 
 @Controller
-public class AMIInterpretationController {
+public class AMIInterpretationController extends AbstractAmiController{
 
 	@Autowired
 	private ServiceRequestService serviceRequestService;

@@ -7,6 +7,7 @@ import com.bouacheria.ami.domain.amiservices.AmiService;
 import com.bouacheria.ami.domain.datatype.Breed;
 import com.bouacheria.ami.domain.datatype.Labs;
 import com.bouacheria.ami.domain.datatype.Species;
+import com.bouacheria.ami.service.datatype.AmiServiceCategory;
 @Service
 public class DeleteMeFactory {
 
@@ -56,5 +57,16 @@ public class DeleteMeFactory {
 		return svc;
 	}
 	
+	public AmiFee getEmployeeDiscountFee()
+	{
+		AmiFee amiFee = new AmiFee();
+		amiFee.setAmount(-15);
+		amiFee.setCategory(AmiServiceCategory.EMPLOYEE_DISCOUNT.getCode());
+		amiFee.setDescription(AmiServiceCategory.EMPLOYEE_DISCOUNT.getName());
+		amiFee.setPercentage(true);
+		amiFee.setName(AmiServiceCategory.EMPLOYEE_DISCOUNT.getName());
+		amiFee.setPercentage(true);
+		return amiFee;
+	}
 	
 }

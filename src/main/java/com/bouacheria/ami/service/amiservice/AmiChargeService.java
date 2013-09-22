@@ -9,8 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.bouacheria.ami.domain.amiservices.AmiCharge;
 import com.bouacheria.ami.domain.amiservices.AmiChargeTotal;
+import com.bouacheria.ami.domain.amiservices.AmiFee;
 import com.bouacheria.ami.domain.amiservices.AmiMilageFeeModel;
 import com.bouacheria.ami.domain.amiservices.AmiService;
+import com.bouacheria.ami.domain.cases.Case;
 import com.bouacheria.ami.repository.amiservices.AmiChargeRepository;
 import com.bouacheria.ami.service.datatype.AmiServiceCategory;
 
@@ -93,31 +95,66 @@ public class AmiChargeService {
 		}
 		
 		
+		List<AmiCharge> percentageToApplyToTotal = new ArrayList<AmiCharge>();
+		
 		for (AmiCharge amiCharge : amiCharges) 
 		{
+			if(amiCharge.getCategory().equals(AmiServiceCategory.EMPLOYEE_DISCOUNT.getCode()))
+			{
+				percentageToApplyToTotal.add(amiCharge);
+				continue;
+			}
 			amiChargesId.append(amiCharge.getId() + ", ");
 			totalPrice = totalPrice + amiCharge.getPrice();
 		}
 		
+		if(percentageToApplyToTotal.size()>0)
+		{
+			for (AmiCharge amiCharge : percentageToApplyToTotal)
+			{
+				amiChargesId.append(amiCharge.getId() + ", ");
+				double percentage = totalPrice * (amiCharge.getPrice()/100);
+				totalPrice = totalPrice + percentage;
+			}
+		}
 		anAmiChargeTotal.setPrice(totalPrice);
 		anAmiChargeTotal.setAmiChargesId(amiChargesId.toString());
 		return anAmiChargeTotal;
 		
 	}
 	
-	public List<AmiCharge> getChargesFromService(List<AmiService> services, long amiCaseId, long serviceRequestId)
+	public List<AmiCharge> getChargesFromService(List<AmiService> services, Case amiCase)
 	{
+		List<AmiCharge> charges = new ArrayList<AmiCharge>();
+
+		if(amiCase.getHospitalEmployee())
+		{
+			
+			AmiFee amiFee = new AmiFee();
+			amiFee.setAmount(-15);
+			amiFee.setCategory(AmiServiceCategory.EMPLOYEE_DISCOUNT.getCode());
+			amiFee.setDescription(AmiServiceCategory.EMPLOYEE_DISCOUNT.getName());
+			amiFee.setPercentage(true);
+			amiFee.setName(AmiServiceCategory.EMPLOYEE_DISCOUNT.getName());
+			amiFee.setPercentage(true);
+			
+			
+			AmiCharge charge = getChargeFromFee(amiFee, amiCase.getId(), amiCase.getRequestId());
+			charges.add(charge);
+		}
 		
 		if(services==null || services.isEmpty())
 		{
-			return new ArrayList<AmiCharge>();
+			return charges;
 		}
-		List<AmiCharge> charges = new ArrayList<AmiCharge>();
+		
 		for (AmiService amiService : services) 
 		{
-			AmiCharge anAmiCharge = getChargeFromService(amiService, amiCaseId, serviceRequestId);
+			AmiCharge anAmiCharge = getChargeFromService(amiService, amiCase.getId(), amiCase.getRequestId());
 			charges.add(anAmiCharge);
 		}
+		
+		
 		return charges;
 	}
 	
@@ -137,6 +174,13 @@ public class AmiChargeService {
 	{
 		AmiCharge anAmiCharge = new AmiCharge();
 		anAmiCharge.basedOnAmiService(milageFeeModel);
+		return anAmiCharge;
+	}
+	
+	public AmiCharge getChargeFromFee(AmiFee anAmiFee, long caseId, long serviceId)
+	{
+		AmiCharge anAmiCharge = new AmiCharge();
+		anAmiCharge.basedOnAmiService(anAmiFee, caseId, serviceId);
 		return anAmiCharge;
 	}
 	

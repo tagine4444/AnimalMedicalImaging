@@ -6,8 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.bouacheria.ami.service.datatype.AmiServiceCategory;
-
 @Entity
 @Table(schema = "amischema", name = "AMI_FEE")
 public class AmiFee {
@@ -37,6 +35,8 @@ public class AmiFee {
 
 	@Column(name="amount")
 	private double amount = 0;
+	
+	
 	
 	
 	public String getName() {

@@ -8,11 +8,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.bouacheria.ami.controller.AbstractAmiController;
 import com.bouacheria.ami.domain.hospital.Hospital;
 import com.bouacheria.ami.service.hospital.HospitalService;
 
 @Controller
-public class HospitalAdminController {
+public class HospitalAdminController extends AbstractAmiController{
 
 
 	@Autowired

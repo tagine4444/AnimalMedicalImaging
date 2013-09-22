@@ -160,7 +160,16 @@
 										<tr>
 											<td>${aCharge.serviceName}</td>
 											<td>${aCharge.serviceDescription}</td>
-											<td>${aCharge.price}</td>
+											<td>${aCharge.price}
+												<c:choose>
+													<c:when test="${aCharge.percentage}">
+														(%)
+													</c:when>
+													<c:otherwise>
+														($)
+													</c:otherwise>
+												</c:choose>
+											</td>
 											<td>
 											
 											<a id="deleteChargesLinkId" href="${rootUrl}deleteCharges?chargeId=${aCharge.id}&caseId=${aCase.id}">Delete</a>

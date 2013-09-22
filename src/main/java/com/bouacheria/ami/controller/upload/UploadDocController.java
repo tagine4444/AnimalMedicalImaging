@@ -2,7 +2,6 @@ package com.bouacheria.ami.controller.upload;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.net.URL;
 import java.util.List;
 import java.util.Properties;
 
@@ -18,11 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.bouacheria.ami.controller.AbstractAmiController;
 import com.bouacheria.ami.domain.uploads.Uploads;
 import com.bouacheria.ami.service.uploads.UploadsService;
 
 @Controller
-public class UploadDocController {
+public class UploadDocController extends AbstractAmiController{
 
 	@Resource(name = "amiProperties")
 	private Properties amiProperties;

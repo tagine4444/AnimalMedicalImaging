@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.bouacheria.ami.controller.AbstractAmiController;
 import com.bouacheria.ami.controller.ServiceRequestAndCaseHelper;
 import com.bouacheria.ami.domain.hospital.Hospital;
 import com.bouacheria.ami.domain.request.ServiceRequest;
@@ -29,7 +30,7 @@ import com.bouacheria.ami.service.request.ServiceRequestService;
  * Handles requests for the application home page.
  */
 @Controller
-public class ServiceRequestController {
+public class ServiceRequestController extends AbstractAmiController{
 	
 	private static final Logger logger = LoggerFactory.getLogger(ServiceRequestController.class);
 	

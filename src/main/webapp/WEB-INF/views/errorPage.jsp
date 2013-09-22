@@ -30,25 +30,28 @@
 					<div class="span12" >
 						
 						<div class="span12">
-							<div class="span12">
-								<h1>Error Page</h1>
-							</div>
+							<h1>Animal Medical Imaging Error Page</h1>
 						</div>
 						
 						<div class="span12">
-							<div class="span12">
-							<br/><br/><br/>
-							</div>
-							<div class="span12">
-								<p>
-									Oops, we are sorry. An error occured. 
-									
-									${errorString}
-								</p>
+							<p style="color: red">
+								Oops sorry, an error occured.
+							</p>
+							<p style="color: red">	
 								
-							</div>
+								To help us improve the quality of our service, please let us know about this error by sending us an email with the steps 
+								that led to this error.<br/>
+								Thank you very much.
+							</p>	
 						</div>
-					
+						
+						
+						<div class="span12">
+							<p><b><u>Stack Trace</u></b><p>
+							<p>${errorString}<p>
+						</div>
+						
+						
 					</div>
 	
 	

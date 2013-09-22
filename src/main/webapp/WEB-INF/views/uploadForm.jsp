@@ -38,22 +38,80 @@
         <form:form modelAttribute="uploadItem" method="post" enctype="multipart/form-data">
         	<form:hidden path="svcReqId" />
 			<form:hidden path="requestNumber" />
+			
+			<div class="span12">
+				<c:if test="${!empty error}"> 
+					<div style="color: red; background-color: yellow; border-style: solid;"> ${error} </div>
+					<br/><br/>
+				</c:if>
+			</div>
 					
             <fieldset>
                 <legend>Upload Documents for Request# ${uploadItem.requestNumber}</legend>
                 <div class="span12">${successMsg}<span style="color: red">${errorMsg}</span></div>
                 <br/><br/>
-                <h5>Please do not upload x rays. This page should only be used to upload documents like blood samples.<br/>
-                If you want to upload x rays, please contact us and we'll get you set up.</h5>
-	   			<div class="span12">
-					<form:input path="fileData" type="file"/>
+                
+                <div class ="span12">
+	                <p>
+	                	<b>Please do not upload x rays. </b> 
+	                	If you want to upload x rays, contact us and we'll get you set up.
+	                </p>
+	                
+	                <p>
+	                	This page should only be used to upload documents relevant to your request like blood samples.
+	                </p>
+	                
+	                <p>
+	                	<b>Note:</b> The max file is 20 mega bytes
+	                </p>
+	                
                 </div>
-                <br/>
- 				<div class="span12">
-                    <input type="submit" name="uploadFile" value="uploadFile"/>
-	   			</div>
- 
+                
+                <div class="span12">
+                	<div class="span12">
+						<ol>
+						
+							
+							<li> Select the file to upload:
+								<form:input path="fileData" type="file"/>
+                			</li>
+							
+							<li>Upload the selected file by clicking the upload button:
+								<input type="submit" name="uploadFile" value="uploadFile"/>
+                			</li>
+                		</ol>
+                	</div>
+		             
+				</div> 
             </fieldset>
+            
+            
+              <fieldset>
+                <legend>Uploaded Documents</legend>
+                
+	   			<table id="table_id" class="table table-bordered table-condensed">
+			    <thead>
+			        <tr>
+			            <th>Request #</th>
+<!-- 			            <th>Request Date</th> -->
+			            <th>Hospital</th>
+			            <th>File Name</th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			       <c:forEach var="anUploadDoc" items="${uploadDocs}">
+						<tr>
+							<td>${anUploadDoc.requestNumber}</td>					
+<%-- 							<td><joda:format value="${anUploadDoc.requestDate}" pattern="MM/dd/yy HH:mm" />					 --%>
+				            <td>${anUploadDoc.hospitalName}</td>
+				            <td>${anUploadDoc.fileName}</td>
+				            <td><a href="${rootUrl}uploadedDocuments?openDoc=${anUploadDoc.id}">Download</a></td>
+						</tr>
+					</c:forEach>
+			    </tbody>
+			</table>
+            
+            
         </form:form>
     </div>    
     </body>

@@ -6,8 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.bouacheria.ami.service.datatype.AmiServiceCategory;
-
 @Entity
 @Table(schema = "amischema", name = "AMI_CHARGE")
 public class AmiCharge {
@@ -43,6 +41,9 @@ public class AmiCharge {
 	
 	@Column(name="description",length=1000)
 	private String description = null;
+	
+	@Column(name="IS_PERCENTAGE")
+	private boolean percentage;
 
 	
 	public void basedOnAmiService(AmiService amiService) 
@@ -66,7 +67,23 @@ public class AmiCharge {
 		this.amiCaseId = milageFeeModel.getCaseId();
 		this.serviceRequestId = milageFeeModel.getRequestId();
 		this.servicePrice = milageFeeModel.getAmiFee().getDollarAmount();
+		this.percentage = milageFeeModel.getAmiFee().isPercentage();
 	}
+	
+	public void basedOnAmiService(AmiFee milageFeeModel, long caseId, long serviceId )
+	{
+		this.serviceId 	  = milageFeeModel.getId();
+		this.serviceName  = milageFeeModel.getName();
+		this.category 	  = milageFeeModel.getCategory();
+		this.serviceDescription = milageFeeModel.getDescription();
+		this.price = milageFeeModel.getAmount();
+		this.amiCaseId = caseId;
+		this.serviceRequestId =serviceId;
+		this.setPercentage(milageFeeModel.isPercentage());
+		this.servicePrice = milageFeeModel.getDollarAmount();
+		
+	}
+
 	
 	public Long getServiceRequestId() {
 		return serviceRequestId;
@@ -144,5 +161,14 @@ public class AmiCharge {
 		return id;
 	}
 
-	
+	public boolean getPercentage()
+	{
+		return percentage;
+	}
+
+	public void setPercentage(boolean percentage)
+	{
+		this.percentage = percentage;
+	}
+
 }

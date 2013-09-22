@@ -18,7 +18,9 @@ table,th, td
 			        <tr>
 			           <th>Requested</th>
 			           <th>Completed</th>
-			            <th>Client</th>
+			            <th>Client Name</th>
+			            <th>Client ID</th>
+			            <th>Client is an Employee?</th>
 			            <th>Patient</th>
 			            <th>Age</th>
 			            <th>Species</th>
@@ -32,9 +34,20 @@ table,th, td
 					<tr>
 						<td><joda:format value="${aCase.requestDate}" pattern="MM/dd/yy" /></td>
 						<td><joda:format value="${aCase.transcriptionCompleteDate}" pattern="MM/dd/yy" /></td>
-						<td>${aCase.clientLastName}, ${aCase.clientFirstName} ${aCase.clientId}</td>					
-						<td>"${aCase.patientName}" </td>					
-						<td>"${aCase.patientAge}" </td>					
+						<td>${aCase.clientLastName}, ${aCase.clientFirstName} </td>					
+						<td>${aCase.clientId}</td>					
+						<td>
+							<c:choose>
+								<c:when test="${aCase.hospitalEmployee}">
+									<b><font color="red"> Yes</font></b>
+								</c:when>
+								<c:otherwise>
+									No
+								</c:otherwise>
+							</c:choose>
+						</td>					
+						<td>${aCase.patientName}</td>					
+						<td>${aCase.patientAge}</td>					
 						<td>${aCase.patientSpecies} </td>					
 						<td>${aCase.patientBreed} </td>					
 						<td>${aCase.patientSex} </td>					
@@ -46,26 +59,6 @@ table,th, td
 			</table>
 	</div>
 			
-<!-- 	<div class="span6"> -->
-<!-- 		<table id="table_id" class="table"> -->
-<!-- 			    <thead> -->
-<!-- 			        <tr> -->
-			            
-<!-- 			            <th>Hospital</th> -->
-<!-- 			            <th>Veterinarian</th> -->
-<!-- 			            <th>Lab</th> -->
-<!-- 			        </tr> -->
-<!-- 			    </thead> -->
-<!-- 			    <tbody> -->
-<!-- 					<tr> -->
-<%-- 			            <td>${aCase.hospitalName}</td> --%>
-<%-- 			            <td>${aCase.veterinarian}</td> --%>
-<%-- 			            <td>${aCase.lab} - ${aCase.labAccount} </td> --%>
-<!-- 					</tr> -->
-<!-- 			    </tbody> -->
-<!-- 			</table> -->
-<!-- 		</div>	 -->
-		
 </div>
 </div>
 	
