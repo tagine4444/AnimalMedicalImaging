@@ -32,7 +32,8 @@
 			      <li class="active"><a href="${rootUrl}hospitalInterpretation">Completed Interpretation</a></li>
 			       <li ><a href="${rootUrl}searchRequest">Search</a></li>
 			      <li ><a href="${rootUrl}hospitalProfileUpdate" >Update Profile</a></li>
-			      <li><a href="#" onclick="alert('Not implemented yet');">Help</a></li>
+			       <li><a href="${rootUrl}faq">Help</a></li>
+			      <li><a href="${rootUrl}faq">Help</a></li>
 			       <li><a href="${rootUrl}login?logout">Logout</a></li>
 			      <li><a href="#" onclick="return;"><span style="color:green;" ><strong>${serviceRequest.hospitalName}</strong></span></a></li>
 		    	</ul>

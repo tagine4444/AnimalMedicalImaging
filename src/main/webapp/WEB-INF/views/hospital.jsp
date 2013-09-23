@@ -28,7 +28,7 @@
 	      <li class="active"><a href="#">Request Services</a></li>
 	      <li ><a href="${rootUrl}hospitalInterpretation">View Interpretation</a></li>
 	      <li><a href="#">Update Profile</a></li>
-	      <li><a href="#">Help</a></li>
+	       <li><a href="${rootUrl}faq">Help</a></li>
 	       <li><a href="${rootUrl}login?logout">Logout</a></li>
 	    </ul>
 	  </div>

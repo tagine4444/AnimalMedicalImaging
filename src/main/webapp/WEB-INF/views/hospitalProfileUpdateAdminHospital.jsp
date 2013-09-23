@@ -69,6 +69,7 @@
 					<fieldset>
 
 						<form:hidden path="id" />
+						<form:hidden path="name" />
 
 						<div class="span12">
 							<div class="span12">

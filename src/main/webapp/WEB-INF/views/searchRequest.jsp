@@ -70,7 +70,7 @@
 			      <li ><a href="${rootUrl}hospitalProfileUpdate" >Update Profile</a></li>
 			      
 			      
-			      <li><a href="#" onclick="alert('Not implemented yet');">Help</a></li>
+			       <li><a href="${rootUrl}faq">Help</a></li>
 			       <li><a href="${rootUrl}login?logout">Logout</a></li>
 		    	</ul>
 		  	</div>
@@ -120,6 +120,7 @@
 			            <th>Species</th>
 			            <th>Breed</th>
 			            <th>Status</th>
+			            <th>Stat</th>
 			            
 			        </tr>
 			    </thead>
@@ -148,7 +149,17 @@
 									<c:otherwise>
 				            			<td>Not Ready</td>
 									</c:otherwise>
-							</c:choose>				
+							</c:choose>	
+							<td>
+							<c:choose>
+									<c:when test="${aServiceReq.stat}">
+										Yes
+									</c:when>
+									<c:otherwise>
+				            			No
+									</c:otherwise>
+							</c:choose>	
+							</td>			
 						</tr>
 					</c:forEach>
 			    </tbody>

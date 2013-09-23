@@ -42,7 +42,7 @@
 			      <li class="active"><a href="${rootUrl}hospitalProfileUpdate" >Update Profile</a></li>
 			      
 			      
-			      <li><a href="#" onclick="alert('Not implemented yet');">Help</a></li>
+			      <li><a href="${rootUrl}faq">Help</a></li>
 			       <li><a href="${rootUrl}login?logout">Logout</a></li>
 			       
 		    	</ul>

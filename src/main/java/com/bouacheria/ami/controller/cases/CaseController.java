@@ -169,8 +169,8 @@ public class CaseController extends AbstractAmiController{
 			return "redirect:case?readonlyadmin="+savedCase.getId();
 		}
 		
-		return "redirect:case?reviewCharges="+aCase.getId();
-		//return "redirect:requestDashboard";
+		//return "redirect:case?reviewCharges="+aCase.getId();
+		return "redirect:requestDashboard";
 	}
 	
 	@RequestMapping(value = "/case", method = RequestMethod.GET, params ="reviewCharges")

@@ -32,6 +32,7 @@
 	<mvc:view-controller path="/aboutus" view-name="aboutus"/>
 	<mvc:view-controller path="/contactus" view-name="contactus"/>
 	<mvc:view-controller path="/ourservices" view-name="ourservices"/>
+	<mvc:view-controller path="/faq" view-name="faq"/>
 
 	<beans:bean id="amiServiceFormatter" class="com.bouacheria.ami.controller.formatter.AmiServiceFormatter" />
 	
