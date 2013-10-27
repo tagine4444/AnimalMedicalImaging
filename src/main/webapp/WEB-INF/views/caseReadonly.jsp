@@ -93,13 +93,11 @@
 				
 				<div class="span12">
 					
-					<c:if test="${!empty amendedVetNotes}">
+<%-- 					<c:if test="${!empty amendedVetNotes}"> --%>
 					<div class="span12">
-						<label><b>Request Amendments</b></label>
-						<form:textarea disabled="true" path="amendedVetNotes" rows="4" class="input-block-level"/>
 						<pre><u><b>Request Amendments</b></u><br/><form:label path="amendedVetNotes" >${aCase.amendedVetNotes}</form:label></pre>
 					</div>
-					</c:if>
+<%-- 					</c:if> --%>
 				</div>
 				
 			</div>

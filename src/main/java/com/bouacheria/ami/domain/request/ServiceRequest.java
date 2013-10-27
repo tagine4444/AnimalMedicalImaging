@@ -12,6 +12,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.Min;
 
+import org.apache.commons.lang.NumberUtils;
 import org.apache.commons.lang.StringUtils;
 import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotBlank;
@@ -965,6 +966,7 @@ public class ServiceRequest {
 	}
 
 
+	
 	public String isValidPatientAge() {
 		
 		final String INVALID_AGE = "Invalid Age";

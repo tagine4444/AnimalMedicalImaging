@@ -3,6 +3,7 @@ package com.bouacheria.ami.domain.datatype;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+
 @Embeddable
 public class Contact {
 	
@@ -96,4 +97,5 @@ public class Contact {
 	{
 		this.homePhone = homePhone;
 	}
+
 }

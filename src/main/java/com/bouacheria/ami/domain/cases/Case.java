@@ -51,6 +51,9 @@ public class Case
 	@Column(name="REQUEST_NUMBER", length=200)
 	private String requestNumber;
 	
+	@Column(name="HAS_DOCUMENTS")
+	private boolean hasDocuments = false;
+	
 	
 	@Column(name="CONSULTATION", length=3000)
 	private String consultation= null;
@@ -858,6 +861,7 @@ public class Case
 		setStat(serviceReq.isStat());
 		setUnderContract(serviceReq.isUnderContract());
 		setCapturedInQuickBook(false);
+		setHasDocuments(serviceReq.isHasDocuments());
 		
 	}
 
@@ -944,6 +948,18 @@ public class Case
 	public boolean getHospitalEmployee()
 	{
 		return this.clientAttribute.isHospitalEmployee();
+	}
+
+
+	public boolean isHasDocuments()
+	{
+		return hasDocuments;
+	}
+
+
+	public void setHasDocuments(boolean hasDocuments)
+	{
+		this.hasDocuments = hasDocuments;
 	}
 
 }

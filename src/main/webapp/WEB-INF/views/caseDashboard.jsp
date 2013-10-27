@@ -122,7 +122,7 @@
 							<td>"${aCase.patientName}" </td>					
 							<td>${aCase.patientSpecies} </td>					
 							<td>${aCase.patientBreed} </td>					
-				            <td><a href="${rootUrl}case?requestToRead=${aCase.id}">Verify Case</a></td>
+				            <td><a href="${rootUrl}case?requestToRead=${aCase.requestId}">Verify Case</a></td>
 						</tr>
 					</c:forEach>
 			    </tbody>
@@ -172,7 +172,7 @@
 							<td>"${aCase.patientName}" </td>					
 							<td>${aCase.patientSpecies} </td>					
 							<td>${aCase.patientBreed} </td>					
-				            <td><a href="${rootUrl}case?requestToRead=${aCase.id}">Verify Case</a></td>
+				            <td><a href="${rootUrl}case?requestToRead=${aCase.requestId}">Verify Case</a></td>
 						</tr>
 					</c:forEach>
 			    </tbody>

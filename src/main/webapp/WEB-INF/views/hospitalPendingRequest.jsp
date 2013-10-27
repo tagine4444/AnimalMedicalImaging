@@ -66,11 +66,11 @@ $(document).ready(function () {
 <form:errors path="*" cssClass="error" />
    
 <div class="container row">
-										
+				
 	<div class="span12">
 		<p>
 			Requests listed on this page are awaiting interpretation. 
-			<a href="${rootUrl}hospitalInterpretation">Completed Interpretation are availabe here</a> or on the menu.
+			<a href="${rootUrl}hospitalInterpretation">Completed Interpretation are available here</a> or on the menu.
 		</p>
 	</div>
 	<fieldset>
@@ -101,10 +101,21 @@ $(document).ready(function () {
 									<c:when test="${aServiceReq.notYetInProgress}">
 										<a href="${rootUrl}serviceRequest?edit=${aServiceReq.id}">Edit Request</a>
 									</c:when>
+									<c:otherwise>
+										<font color="red">Can no longer be edited</font> 
+									</c:otherwise>
 								</c:choose>	
 							</td>
 							<td>
-								<a href="${rootUrl}upload?svcReqId=${aServiceReq.id}&requestNumber=${aServiceReq.requestNumber}">Upload Documents</a>
+							
+								<c:choose>
+									<c:when test="${aServiceReq.notYetInProgress}">
+										<a href="${rootUrl}upload?svcReqId=${aServiceReq.id}&requestNumber=${aServiceReq.requestNumber}">Upload Documents</a>
+									</c:when>
+									<c:otherwise>
+										<font color="red">Can no longer be updated</font> 
+									</c:otherwise>
+								</c:choose>
 							</td>
 						</tr>
 					</c:forEach>
@@ -139,10 +150,20 @@ $(document).ready(function () {
 									<c:when test="${aServiceReq.notYetInProgress}">
 										<a href="${rootUrl}serviceRequest?edit=${aServiceReq.id}">Edit Request</a>
 									</c:when>
+									<c:otherwise>
+										<font color="red">Can no longer be edited</font> 
+									</c:otherwise>
 								</c:choose>	
 							</td>
 							<td>
-								<a href="${rootUrl}upload?svcReqId=${aServiceReq.id}&requestNumber=${aServiceReq.requestNumber}">Upload Documents</a>
+								 <c:choose>
+									<c:when test="${aServiceReq.notYetInProgress}">
+										<a href="${rootUrl}upload?svcReqId=${aServiceReq.id}&requestNumber=${aServiceReq.requestNumber}">Upload Documents</a>
+									</c:when>
+									<c:otherwise>
+										<font color="red">Can no longer be updated</font> 
+									</c:otherwise>
+								</c:choose>
 							</td>
 						</tr>
 					</c:forEach>

@@ -176,6 +176,12 @@ public class ServiceRequestController extends AbstractAmiController{
 	public String editServiceRequest( Model model, @RequestParam long edit) 
 	{
 		ServiceRequest serviceReq = serviceRequestService.findById(edit);
+		
+		if(serviceReq.isInProgress())
+		{
+			return "redirect:hospitalPendingRequest";
+		}
+		
 		model.addAttribute("serviceRequest", serviceReq);
 		serviceRequestAndCaseHelper.addRefDataToModel(model);
 		

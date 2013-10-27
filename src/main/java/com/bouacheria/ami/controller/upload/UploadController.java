@@ -53,6 +53,13 @@ public class UploadController extends AbstractAmiController {
 	@RequestMapping(value = "/upload",method = RequestMethod.GET,params = { "svcReqId","requestNumber" })
 	public String getUploadForm(Model model, @ModelAttribute UploadItem uploadItem,@RequestParam long svcReqId, @RequestParam String requestNumber) {
 		
+		ServiceRequest serviceReq = serviceRequestService.findById(svcReqId);
+		
+		if(serviceReq.isInProgress())
+		{
+			return "redirect:hospitalPendingRequest";
+		}
+		
 		uploadItem.setRequestNumber(requestNumber);
 		uploadItem.setSvcReqId(svcReqId);
 		model.addAttribute(uploadItem);

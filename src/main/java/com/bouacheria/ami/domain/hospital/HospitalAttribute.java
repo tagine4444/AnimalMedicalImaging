@@ -117,4 +117,5 @@ public class HospitalAttribute {
 	public void setAcronym(String acronym) {
 		this.acronym = acronym;
 	}
+
 }
