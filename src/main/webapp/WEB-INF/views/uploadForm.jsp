@@ -46,7 +46,6 @@
 				</c:if>
 			</div>
 					
-            <fieldset>
                 <legend>Upload Documents for Request# ${uploadItem.requestNumber}</legend>
                 <div class="span12">${successMsg}<span style="color: red">${errorMsg}</span></div>
                 <br/><br/>
@@ -83,8 +82,6 @@
                 	</div>
 		             
 				</div> 
-            </fieldset>
-            
             
               <fieldset>
                 <legend>Uploaded Documents</legend>

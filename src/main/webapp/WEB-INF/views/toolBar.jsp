@@ -24,4 +24,4 @@
 		    	<li><a href="${rootUrl}hospitalCreateAccount">Create an account</a></li>
 		    </ul>
 	    </div>
-    </div> 
+   </div> 

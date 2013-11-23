@@ -34,7 +34,7 @@
 <body>
 
 
-<%@ include file="toolBar.jsp" %>
+<%-- <%@ include file="toolBar.jsp" %> --%>
 
 <%-- <div class="error">${errors}</div> --%>
 <form:form id="form" method="post"  modelAttribute="hospital" >
@@ -42,6 +42,19 @@
    
    
 	<div class="row">	
+	
+		<div class="navbar">
+		    <div class="navbar-inner">
+		    <a class="brand" ></a>
+			    <ul class="nav">
+			    	<li><a href="${rootUrl}">Home</a></li>
+			    	<li><a href="${rootUrl}ourservices">Our Services</a></li>
+			    	<li><a href="${rootUrl}contactus">Contact us</a></li>
+			    	<li><a href="${rootUrl}aboutus">About us</a></li>
+			    	<li class="active"><a href="${rootUrl}hospitalCreateAccount">Create an account</a></li>
+			    </ul>
+		    </div>
+	   </div> 
 		<div class="span12">
 			<fieldset>
 			    <legend>Create an Account</legend>
