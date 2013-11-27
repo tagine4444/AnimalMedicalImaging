@@ -71,6 +71,7 @@ public class RepositoryConfig {
 	@PostConstruct
 	public void printConfig()
 	{
+		//System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> configureed");
 		System.out.println(configUtil.toString());
 	}
 }

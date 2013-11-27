@@ -18,20 +18,6 @@
         <script src="${resourcesUrl}/media/js/jquery-1.8.3.js"></script>
     	<script src="${resourcesUrl}/media/bootstrap/js/bootstrap.js"></script>
 
-
-<script type="text/javascript">
-
-// $(document).ready(function () {
-//     if ($("[rel=tooltip]").length) {
-//         $("[rel=tooltip]").tooltip();
-//     }
-    
-//     $('#id1').popover('show');
-// 	$('#requestedbyTooltip').tooltip('show');
-	
-// });
-</script>	
-	
 <style>
 .error {
 	color: #ff0000;
@@ -40,27 +26,29 @@
 </style>
 </head>
 <body>
-
-<%-- 	<%@ include file="toolBar.jsp" %> --%>
-<%-- 	<%@ include file="toolBar.jsp" %> --%>
 	
-	<%@ include file="toolBar.jsp" %>
-	<div class="row">
-	
-<!-- 	<a href="#" class="tooltip-test" title="sdfjsdsklj" data-original-title="Tooltip">This link</a> -->
-<!-- 										<br/> -->
-<!-- 										<a href="#" id ="element" data-toggle="tooltip" data-content="And here's some amazing content. It's very engaging. right?"  title="first tooltip">hover over me</a> -->
-										
-<!-- 										<a id="id1" href="#" class="btn btn-large btn-danger" data-toggle="popover"  -->
-<!-- 										title="" data-content="And here's some amazing content. It's very engaging. right?"  -->
-<!-- 										data-original-title="A Title">Click to toggle popover heee</a> -->
-		
+	<div class="row-fluid">
+	<div class="navbar">
+	    <div class="navbar-inner">
+	    <a class="brand" ></a>
+		    <ul class="nav">
+		    	<li><a href="${rootUrl}">Home</a></li>
+		    	<li><a href="${rootUrl}ourservices">Our Services</a></li>
+		    	<li><a href="${rootUrl}contactus">Contact us</a></li>
+		    	<li class="active"><a href="${rootUrl}aboutus">About us</a></li>
+		    	<li><a href="${rootUrl}hospitalCreateAccount">Create an account</a></li>
+		    	<li><a href="${rootUrl}login">Member Login</a></li>
+		    </ul>
+	    </div>
 					<div class="span12" >
 						
 						<div class="span12">
-							<div class="span12">
-								<h1>Animal Medical Imaging</h1>
-							</div>
+							<table>
+								<tr valign="top">
+									<td><img src="${resourcesUrl}/img/ami_logo.jpg" alt="AMI Logo" width="150" ></td>
+									<td><h3>Animal Medical Imaging</h3></td>
+								</tr>
+							</table>
 						</div>
 						
 						<div class="span12">

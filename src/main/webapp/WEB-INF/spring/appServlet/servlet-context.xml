@@ -29,6 +29,8 @@
 <!-- 	<context:component-scan base-package="com.bouacheria.ami.*.config" /> -->
 	<context:component-scan base-package="com.bouacheria.ami.*" />
 	
+	<mvc:view-controller path="/" view-name="index"/>
+	<mvc:view-controller path="/login" view-name="login"/>
 	<mvc:view-controller path="/aboutus" view-name="aboutus"/>
 	<mvc:view-controller path="/contactus" view-name="contactus"/>
 	<mvc:view-controller path="/ourservices" view-name="ourservices"/>

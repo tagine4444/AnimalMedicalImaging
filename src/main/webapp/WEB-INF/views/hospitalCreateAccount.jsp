@@ -45,16 +45,27 @@
 	
 		<div class="navbar">
 		    <div class="navbar-inner">
-		    <a class="brand" ></a>
-			    <ul class="nav">
-			    	<li><a href="${rootUrl}">Home</a></li>
-			    	<li><a href="${rootUrl}ourservices">Our Services</a></li>
-			    	<li><a href="${rootUrl}contactus">Contact us</a></li>
-			    	<li><a href="${rootUrl}aboutus">About us</a></li>
-			    	<li class="active"><a href="${rootUrl}hospitalCreateAccount">Create an account</a></li>
-			    </ul>
+			    <a class="brand" ></a>
+				    <ul class="nav">
+				    	<li><a href="${rootUrl}">Home</a></li>
+				    	<li><a href="${rootUrl}ourservices">Our Services</a></li>
+				    	<li><a href="${rootUrl}contactus">Contact us</a></li>
+				    	<li><a href="${rootUrl}aboutus">About us</a></li>
+				    	<li class="active"><a href="${rootUrl}hospitalCreateAccount">Create an account</a></li>
+				    	<li><a href="${rootUrl}login">Member Login</a></li>
+				    </ul>
 		    </div>
-	   </div> 
+   		</div> 
+		<div class="span12">
+						<div class="span12">
+							<table>
+								<tr valign="top">
+									<td><img src="${resourcesUrl}/img/ami_logo.jpg" alt="AMI Logo" width="150" ></td>
+									<td><h3>Animal Medical Imaging</h3></td>
+								</tr>
+							</table>
+						</div>		
+		
 		<div class="span12">
 			<fieldset>
 			    <legend>Create an Account</legend>
@@ -186,6 +197,7 @@
 		   		</div>
 		   		
 		   </fieldset>
+	  	</div>
 	  	</div>
 	</div>	  	
 	  	

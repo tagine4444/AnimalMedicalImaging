@@ -26,11 +26,11 @@ public class LoginController {
 	
 
 	
-	@Autowired
-	private DeleteMeService deleteMeService;
-	
-	@Autowired
-	private AmiServiceServiceCached serviceCache;
+//	@Autowired
+//	private DeleteMeService deleteMeService;
+//	
+//	@Autowired
+//	private AmiServiceServiceCached serviceCache;
 	
 	@Autowired
 	private SecurityUtil securityUtil;

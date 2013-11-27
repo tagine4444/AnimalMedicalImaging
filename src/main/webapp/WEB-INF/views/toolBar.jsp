@@ -17,11 +17,12 @@
 	    <div class="navbar-inner">
 	    <a class="brand" ></a>
 		    <ul class="nav">
-		    	<li class="active"><a href="${rootUrl}">Home</a></li>
-		    	<li><a href="${rootUrl}ourservices">Our Services</a></li>
-		    	<li><a href="${rootUrl}contactus">Contact us</a></li>
-		    	<li><a href="${rootUrl}aboutus">About us</a></li>
-		    	<li><a href="${rootUrl}hospitalCreateAccount">Create an account</a></li>
+		    <li class="active"><a href="${rootUrl}">Home</a></li>
+	    	<li><a href="${rootUrl}ourservices">Our Services</a></li>
+	    	<li><a href="${rootUrl}contactus">Contact us</a></li>
+	    	<li><a href="${rootUrl}aboutus">About us</a></li>
+	    	<li><a href="${rootUrl}hospitalCreateAccount">Create an account</a></li>
+	    	<li><a href="${rootUrl}login">Member Login</a></li>
 		    </ul>
 	    </div>
    </div> 
