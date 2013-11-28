@@ -13,16 +13,14 @@ import org.springframework.stereotype.Service;
 
 import com.bouacheria.ami.domain.amiservices.AmiFee;
 import com.bouacheria.ami.domain.amiservices.AmiService;
-import com.bouacheria.ami.repository.config.ConfigUtil;
 import com.bouacheria.ami.service.datatype.AmiServiceCategory;
-import com.bouacheria.ami.temp.DeleteMeService;
 
 @Service
 public class AmiServiceServiceCached {
 	
 	
-	@Autowired
-	private DeleteMeService deleteMeService;
+//	@Autowired
+//	private DeleteMeService deleteMeService;
 	
 	@Autowired
 	private AmiServiceService amiService;
@@ -30,8 +28,8 @@ public class AmiServiceServiceCached {
 	@Autowired
 	private AmiFeeService amiFeeService;
 	
-	@Autowired
-	private ConfigUtil config;
+//	@Autowired
+//	private ConfigUtil config;
 	
 	
 	private ConcurrentHashMap<Long, AmiService> cacheId;
@@ -68,21 +66,22 @@ public class AmiServiceServiceCached {
 		return cacheId.get(id);
 	}
 	
-	public void loadData()
-	{
-		if(config.isLoadData())
-		{
-			deleteMeService.load();
-		}
-		//serviceRequestNotificationCache.cachEmail();
-	}
+//	public void loadData()
+//	{
+//		if(config.isLoadData())
+//		{
+//			deleteMeService.load();
+//		}
+//		//serviceRequestNotificationCache.cachEmail();
+//	}
 	
 //	@PostConstruct
 	public void init() 
 	{
 		
 		initCategories();
-		loadData();
+		//loadData();
+		
 		allServices = amiService.findAll();
 		
 		addToCacheId(allServices);
@@ -248,10 +247,21 @@ public class AmiServiceServiceCached {
 	}
 	
 	public ConcurrentHashMap<Long, AmiService> getCacheId() {
+		
+		if(cacheId==null)
+		{
+			init();
+		}
+		
 		return cacheId;
 	}
 
 	public ConcurrentHashMap<AmiServiceCategory, List<AmiService>> getCache() {
+		
+		if(cache==null)
+		{
+			init();
+		}
 		return cache;
 	}
 	

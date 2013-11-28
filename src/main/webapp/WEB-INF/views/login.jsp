@@ -30,7 +30,7 @@
 	
 
   
-<div class="row-fluid">
+<div class="row">
 <div class="navbar">
 	    <div class="navbar-inner">
 	    <a class="brand" ></a>
@@ -40,7 +40,7 @@
 	    	<li><a href="${rootUrl}contactus">Contact us</a></li>
 	    	<li><a href="${rootUrl}aboutus">About us</a></li>
 	    	<li><a href="${rootUrl}hospitalCreateAccount">Create an account</a></li>
-	    	<li class="active"><a href="${rootUrl}">Member Login</a></li>
+	    	<li class="active"><a href="${rootUrl}/login">Member Login</a></li>
 	    </ul>
     </div>
  </div> 
@@ -48,18 +48,16 @@
 
 
 
-<div class="span12">
-	<h2>Animal Medical Imaging</h2>
-</div>	
+
 
 
 <div class="span12">
-	<span class="error">${errorMessage}</span>
-</div>	
+
+<%@ include file="headerLogo.jsp" %>
 
 
-
-<div class="span3">
+<div class="span4">
+	<br/>
 	<form:form class="well" name="f" action="${authPage}" method="post" >
 		
 		<span><b>Member Login</b></span>
@@ -74,7 +72,7 @@
 	  	<button type="submit" name="login" class="btn">Login</button>
 	</form:form>
 </div>
-	
+</div>	
 	
 <script type="text/javascript">
 	//<![CDATA[   

@@ -172,6 +172,7 @@ public class AmiChargesController
 		//AmiService miscSvc = cachedServicesService.getMiscAmiService();
 		AmiService miscSvc = new AmiService();
 		
+		miscSvc.setCategory(AmiServiceCategory.MISC_SERVICE.getCode());
 		miscSvc.setName(AmiServiceCategory.MISC_SERVICE.getName());
 		miscSvc.setPriceMin(amiChargesModel.getMiscPrice());
 		miscSvc.setPriceMax(amiChargesModel.getMiscPrice());

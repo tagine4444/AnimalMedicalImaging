@@ -35,7 +35,7 @@
 
 <%-- 	<%@ include file="toolBar.jsp" %> --%>
 	
-	<div class="row-fluid">
+	<div class="row">
 	<div class="navbar">
 	    <div class="navbar-inner">
 	    <a class="brand" ></a>
@@ -52,14 +52,7 @@
 		
 					<div class="span12" >
 						
-						<div class="span12">
-							<table>
-								<tr valign="top">
-									<td><img src="${resourcesUrl}/img/ami_logo.jpg" alt="AMI Logo" width="150" ></td>
-									<td><h3>Animal Medical Imaging</h3></td>
-								</tr>
-							</table>
-						</div>
+						<%@ include file="headerLogo.jsp" %>
 												
 						<div class="span12">
 							<div class="span12">
