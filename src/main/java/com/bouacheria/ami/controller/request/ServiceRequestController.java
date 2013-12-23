@@ -153,6 +153,10 @@ public class ServiceRequestController extends AbstractAmiController{
 			}
 		}
 		
+		if(savedReq.isDigitalDocs())
+		{
+			return "redirect:upload?svcReqId="+savedReq.getId()+"&requestNumber="+savedReq.getRequestNumber();
+		}
 		return "redirect:hospitalPendingRequest";
 	}
 	

@@ -30,6 +30,8 @@ public class UploadDocController extends AbstractAmiController{
 	@Autowired
 	private UploadsService uploadsService;
 
+	
+
 	@ModelAttribute("uploadDocItem")
 	public UploadDocItem createUploadItem() 
 	{
@@ -47,6 +49,41 @@ public class UploadDocController extends AbstractAmiController{
 		model.addAttribute("uploadDocs", uploadDocs);
 		return "uploadedDocuments";
 	}
+	@RequestMapping(value = "/deleteDocuments",method = RequestMethod.GET, params={"openDoc","svcReqId"})
+	public String deleteUploadDoc(Model model, @ModelAttribute UploadDocItem uploadItem,@RequestParam long openDoc, @RequestParam Long svcReqId) 
+	{
+		Uploads uploadDoc = uploadsService.findById(openDoc);
+		try
+		{
+			 
+    		File file = new File(uploadDoc.getFilePath());
+    		if(file.exists())
+    		{
+    			String fileName = uploadDoc.getFileName();
+    			if(file.delete())
+        		{
+    				uploadsService.delete(uploadDoc.getId());
+        			model.addAttribute("msg", fileName+ " deleted.");
+        		}
+        		else
+        		{
+        			model.addAttribute("msg", fileName+ " could not be delete " );
+        		}	
+    		}
+    		else
+    		{
+    			model.addAttribute("msg", "File does not exist" );
+    		}
+    		
+ 
+    	}
+		catch(Exception e)
+		{
+    		e.printStackTrace();
+    	}
+		
+		return "redirect:upload?svcReqId="+svcReqId+"&requestNumber="+uploadItem.getRequestNumber();
+	}
 	
 	 @RequestMapping(value = "/uploadedDocuments", method = RequestMethod.GET, params={"openDoc"})
 	 public void handleFileDownload(HttpServletResponse res,Model model,  @RequestParam long openDoc) {
@@ -55,9 +92,6 @@ public class UploadDocController extends AbstractAmiController{
 		 
 		 try 
 		 {
-	            //String fn = "/Test.xls";
-	            //URL url = getClass().getResource(fn);
-//	            File f = new File(url.toURI());
 			 File f = new File(anUpload.getFilePath());
 	            System.out.println("Loading file "+anUpload.getFilePath()+"("+f.getAbsolutePath()+")");
 	            
@@ -77,5 +111,7 @@ public class UploadDocController extends AbstractAmiController{
 	        	e.printStackTrace();
 	        }
 	    }
+
+	 
 
 }

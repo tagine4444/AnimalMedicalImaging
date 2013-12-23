@@ -16,13 +16,17 @@ public interface ServiceRequestRepository extends JpaRepository<ServiceRequest, 
 	ServiceRequest findByRequestNumberAndHospitalId(String requestNumber, long hospitalId);
 
 	
-	@Query("select s from ServiceRequest s where s.stat = ?1 and s.priority =?2 and s.trascribedDate is null and s.readingInCompleteDate is null ORDER BY id")
-	List<ServiceRequest> findRequestNotTranscribedAndNotRead(boolean stat, int priority);
+	@Query("select s from ServiceRequest s where s.trascribedDate is null and s.readingInCompleteDate is null and s.doneUploadingDocs =?1 ORDER BY id")
+	List<ServiceRequest> findRequestNotTranscribedAndNotReadAndNotDoneUploading(boolean doneUploadingDocs);
+
+	@Query("select s from ServiceRequest s where s.stat = ?1 and s.priority =?2 and s.trascribedDate is null and s.readingInCompleteDate is null and s.doneUploadingDocs =?3 ORDER BY id")
+	List<ServiceRequest> findRequestNotTranscribedAndNotRead(boolean stat, int priority, boolean doneUploadingDocs);
 	
 	
 	List<ServiceRequest> findByTrascribedDateIsNullAndStatAndHospitalId(boolean stat, long hospitalId);
 	List<ServiceRequest> findByTrascribedDateIsNullAndHospitalId(long hospitalId);
 	List<ServiceRequest> findByTrascribedDateIsNotNullAndStatAndHospitalId(boolean stat, long hospitalId);
+	List<ServiceRequest> findByTrascribedDateIsNullAndDoneUploadingDocsIsFalseAndHospitalId(long hospitalId);
 	 
 	
 	@Query("select s from ServiceRequest s where s.stat = ?1 and s.trascribedDate >=curdate() ORDER BY id")

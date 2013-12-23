@@ -78,7 +78,7 @@
 			            <th>Client</th>
 			            <th>Patient</th>
 			            <th>Status</th>
-			            <th>Documents</th>
+			            <th>Doc</th>
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -123,7 +123,8 @@
 			            <th>Species</th>
 			            <th>Breed</th>
 			            <th>Status</th>
-			            <th>Documents</th>
+			            <th>Doc</th>
+			            <th>Done Uploading</th>
 			            
 			        </tr>
 			    </thead>
@@ -148,6 +149,16 @@
 									<a href="${rootUrl}uploadedDocuments?svcReqId=${aServiceReq.id}">Uploaded Documents</a>
 							 	</c:if>
 							</td>
+							 <td>
+								<c:choose>
+									<c:when test="${aServiceReq.doneUploadingDocs}">
+										Yes
+									</c:when>
+									<c:otherwise>
+										No
+									</c:otherwise>
+							 	</c:choose>
+							</td>
 						</tr>
 					</c:forEach>
 			    </tbody>
@@ -156,9 +167,11 @@
 	  	</c:when>
 		</c:choose>
 </div>
+
+
 <div class="span12">		
 		<!-- Normal priority requests -->
-		<legend>Requests</legend>
+		<legend>Regular Priority Requests</legend>
 	  	<c:choose>
 		<c:when test="${hasNonStatToProcess}">  
 		<div class="span12">
@@ -173,7 +186,8 @@
 			            <th>Species</th>
 			            <th>Breed</th>
 			            <th>Status</th>
-			            <th>Documents</th>
+			            <th>Doc</th>
+			            <th>Done Uploading</th>
 			            
 			        </tr>
 			    </thead>
@@ -198,6 +212,16 @@
 									<a href="${rootUrl}uploadedDocuments?svcReqId=${aServiceReq.id}">Uploaded Documents</a>
 							 	</c:if>
 							</td>
+				            <td>
+								<c:choose>
+									<c:when test="${aServiceReq.doneUploadingDocs}">
+										Yes
+									</c:when>
+									<c:otherwise>
+										No
+									</c:otherwise>
+							 	</c:choose>
+							</td>
 						</tr>
 					</c:forEach>
 			    </tbody>
@@ -207,6 +231,71 @@
 		</c:choose>
 <!-- 	</fieldset> -->
 </div>
+
+
+
+<div class="span12">		
+		<!-- Normal priority requests -->
+		<legend>Requests for wich document upload is not complete</legend>
+	  	<c:choose>
+		<c:when test="${hasReqWhichDocsArentDoneUploading}">  
+		<div class="span12">
+			<table id="table_id" class="table table-bordered table-condensed">
+			    <thead>
+			        <tr>
+			            <th>Request Date</th>
+			            <th>Request#</th>
+			            <th>Hospital</th>
+			            <th>Client</th>
+			            <th>Patient</th>
+			            <th>Species</th>
+			            <th>Breed</th>
+			            <th>Status</th>
+			            <th>Doc</th>
+			            <th>Done Uploading</th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			       <c:forEach var="aServiceReq" items="${allReqWhichDocsArentDoneUploading}">
+						<tr>
+							<td>
+									<joda:format value="${aServiceReq.requestDate}" pattern="MM/dd/yy HH:mm" />					
+									<c:if test="${aServiceReq.notYetInProgress}">
+										<a href="${rootUrl}serviceRequest?edit=${aServiceReq.id}">Edit</a>
+									</c:if>
+				            </td>
+				            <td>${aServiceReq.requestNumber}</td>
+				            <td>${aServiceReq.hospitalName}</td>
+							<td>${aServiceReq.clientLastName}, ${aServiceReq.clientFirstName} </td>					
+							<td>"${aServiceReq.patientName}" </td>					
+							<td>${aServiceReq.patientSpecies} </td>					
+							<td>${aServiceReq.patientBreed} </td>					
+				            <td><a href="${rootUrl}case?requestToRead=${aServiceReq.id}" onclick="$.blockUI();">${aServiceReq.caseStatus}</a></td>
+				            <td>
+								<c:if test="${aServiceReq.hasDocuments}">
+									<a href="${rootUrl}uploadedDocuments?svcReqId=${aServiceReq.id}">Uploaded Documents</a>
+							 	</c:if>
+							</td>
+							 <td>
+								<c:choose>
+									<c:when test="${aServiceReq.doneUploadingDocs}">
+										Yes
+									</c:when>
+									<c:otherwise>
+										No
+									</c:otherwise>
+							 	</c:choose>
+							</td>
+						</tr>
+					</c:forEach>
+			    </tbody>
+			</table>
+	  	</div>
+	  	</c:when>
+		</c:choose>
+<!-- 	</fieldset> -->
+</div>
+
 </div>
 </div>
 </div>

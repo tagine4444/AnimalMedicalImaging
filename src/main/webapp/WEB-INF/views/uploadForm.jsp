@@ -45,38 +45,23 @@
 					<br/><br/>
 				</c:if>
 			</div>
-					
-                <legend>Upload Documents for Request# ${uploadItem.requestNumber}</legend>
                 <div class="span12">${successMsg}<span style="color: red">${errorMsg}</span></div>
-                <br/><br/>
-                
-                <div class ="span12">
-	                <p>
-	                	<b>Please do not upload x rays. </b> 
-	                	If you want to upload x rays, contact us and we'll get you set up.
-	                </p>
-	                
-	                <p>
-	                	This page should only be used to upload documents relevant to your request like blood samples.
-	                </p>
-	                
-	                <p>
-	                	<b>Note:</b> The max file is 20 mega bytes
-	                </p>
-	                
-                </div>
+					
+                <legend>Digital Documents for Request# ${uploadItem.requestNumber}</legend>
                 
                 <div class="span12">
                 	<div class="span12">
 						<ol>
-						
-							
 							<li> Select the file to upload:
 								<form:input path="fileData" type="file"/>
                 			</li>
-							
 							<li>Upload the selected file by clicking the upload button:
 								<input type="submit" name="uploadFile" value="uploadFile"/>
+                			</li>
+							<li>When you are done uploading the document, click on the Submit Request button
+								below (in red) to make your request visible to the radiologist. 
+								<br><b>Note</b> The radiologist will not treat your request until
+								click on the submit button. 
                 			</li>
                 		</ol>
                 	</div>
@@ -85,6 +70,13 @@
             
               <fieldset>
                 <legend>Uploaded Documents</legend>
+                
+                	
+<!--                 <div class="span12"> -->
+<!-- 					<b>Notes about uploaded documents</b> -->
+<!-- 					<textarea id="consTxtId" rows="4" class="input-block-level" maxlength="3000"/> -->
+					
+<!-- 				</div> -->
                 
 	   			<table id="table_id" class="table table-bordered table-condensed">
 			    <thead>
@@ -103,11 +95,19 @@
 				            <td>${anUploadDoc.hospitalName}</td>
 				            <td>${anUploadDoc.fileName}</td>
 				            <td><a href="${rootUrl}uploadedDocuments?openDoc=${anUploadDoc.id}">Download</a></td>
+				            <td><a href="${rootUrl}deleteDocuments?openDoc=${anUploadDoc.id}&svcReqId=${anUploadDoc.requestId}">Delete ReqNumber${anUploadDoc.requestId}</a></td>
 						</tr>
 					</c:forEach>
 			    </tbody>
 			</table>
-            
+			
+			<p>
+				I am done uploading documents. 
+<%-- 				<input type="submit" name="uploadFile" value="${uploadItem.requestNumber}" style="color: red"/> --%>
+				<div class="span12">
+     		   		<button type="submit" name="doneUploadingDocs" value="${uploadItem.requestNumber}" class="btn" ><font color="red">Notify Radiologist</font></button>
+	    		</div>
+            </p>
             
         </form:form>
     </div>    

@@ -36,6 +36,8 @@ public class RequestDashbordController extends AbstractAmiController{
 		List<ServiceRequest> nonStatToProcess = serviceRequestService.findNonStatToReadByRadiologist();
 		List<ServiceRequest> nonStatToProcessHigh = serviceRequestService.findNonStatToReadByRadiologistHighPriority();
 		
+		List<ServiceRequest> allReqWhichDocsArentDoneUploading =  serviceRequestService.findStatToReadByRadiologistWithDocsNotuploadedYet();
+		
 		
 		
 		model.addAttribute("statToProcess",statToProcess);
@@ -46,6 +48,9 @@ public class RequestDashbordController extends AbstractAmiController{
 		
 		model.addAttribute("nonStatToProcessHigh",nonStatToProcessHigh);
 		model.addAttribute("hasNonStatToProcessPriorityHigh",nonStatToProcessHigh!=null && nonStatToProcessHigh.size()>0);
+		
+		model.addAttribute("allReqWhichDocsArentDoneUploading",allReqWhichDocsArentDoneUploading);
+		model.addAttribute("hasReqWhichDocsArentDoneUploading",allReqWhichDocsArentDoneUploading!=null && allReqWhichDocsArentDoneUploading.size()>0);
 		
 		return "requestDashboard";
 	}

@@ -28,7 +28,20 @@
 	$(document).ready(function () {
 	    $('#id1').popover('hide');
 	    $('#requestedbyPopover').popover('hide');
-		
+	    
+	   
+	    
+	    
+	    var text_max = 3000;
+	    $('#consTxt_feedback').html(text_max + ' characters remaining');
+
+	    $('#consTxtId').keyup(function() {
+	        var text_length = $('#consTxtId').val().length;
+	        var text_remaining = text_max - text_length;
+
+	        $('#consTxt_feedback').html(text_remaining + ' characters remaining');
+	    });
+	    
 	});
 	</script>
 	
@@ -79,7 +92,6 @@
 			<form:hidden path="requestNumber"/>
 	
 		<div class="span12">
-			
 			<%@ include file="hospitalDescription.jsp" %>
 			<%@ include file="patientDescription.jsp" %> 
 			
@@ -88,6 +100,10 @@
 			<%@ include file="consultation.jsp" %>
 
 			<%@ include file="tentativeDiagnosis.jsp" %>
+			
+			<%@ include file="serviceReqDocuments.jsp" %>
+			
+			
 			
 			<div class="span12">
 			<div class="span12">

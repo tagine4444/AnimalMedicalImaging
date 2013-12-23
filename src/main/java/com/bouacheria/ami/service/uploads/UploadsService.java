@@ -24,10 +24,14 @@ public class UploadsService {
 		return repo.findOne(id);
 	}
 	
+	public void delete(long id){
+		repo.delete(id);
+	}
+	
 	public List<Uploads> findByRequestId(Long requestId){
 		return repo.findByRequestId(requestId);
 	}
-
+	
 	
 	public List<Uploads> findAll(){
 		return repo.findAll();

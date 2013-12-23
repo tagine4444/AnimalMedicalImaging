@@ -47,7 +47,6 @@ public class ServiceRequestService  {
 	}
 	
 	
-	
 	// --------------------- Request Transcribed today for a hospital STAT & NORMAL-----------------------
 	public List<ServiceRequest> findStatReqTranscribedTodayForHospital(long hospitalId)
 	{
@@ -79,9 +78,19 @@ public class ServiceRequestService  {
 	}
 	
 	// --------------------- Request List that Radiologist has to read STAT & NORMAL -----------------------
+	public List<ServiceRequest> findStatToReadByRadiologistWithDocsNotuploadedYet()
+	{
+		List<ServiceRequest> result = repo.findRequestNotTranscribedAndNotReadAndNotDoneUploading(false);
+		if(result ==null)
+		{
+			return new ArrayList<ServiceRequest>();
+		}
+		return result; 
+	}
+	
 	public List<ServiceRequest> findStatToReadByRadiologist()
 	{
-		List<ServiceRequest> result = repo.findRequestNotTranscribedAndNotRead(true,ServiceRequest.PRIORITY_NORMAL);
+		List<ServiceRequest> result = repo.findRequestNotTranscribedAndNotRead(true,ServiceRequest.PRIORITY_NORMAL,true);
 		if(result ==null)
 		{
 			return new ArrayList<ServiceRequest>();
@@ -91,7 +100,7 @@ public class ServiceRequestService  {
 	
 	public List<ServiceRequest> findNonStatToReadByRadiologist()
 	{
-		List<ServiceRequest> result =repo.findRequestNotTranscribedAndNotRead(false, ServiceRequest.PRIORITY_NORMAL);
+		List<ServiceRequest> result =repo.findRequestNotTranscribedAndNotRead(false, ServiceRequest.PRIORITY_NORMAL,true);
 		if(result ==null)
 		{
 			return new ArrayList<ServiceRequest>();
@@ -101,7 +110,7 @@ public class ServiceRequestService  {
 	
 	public List<ServiceRequest> findNonStatToReadByRadiologistHighPriority()
 	{
-		List<ServiceRequest> result = repo.findRequestNotTranscribedAndNotRead(false, ServiceRequest.PRIORITY_HIGH);
+		List<ServiceRequest> result = repo.findRequestNotTranscribedAndNotRead(false, ServiceRequest.PRIORITY_HIGH,true);
 		if(result ==null)
 		{
 			return new ArrayList<ServiceRequest>();

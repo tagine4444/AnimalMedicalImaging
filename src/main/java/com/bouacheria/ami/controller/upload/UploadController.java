@@ -43,6 +43,9 @@ public class UploadController extends AbstractAmiController {
 	@Autowired
 	private AmiServiceServiceCached cache;
 	
+	@Autowired
+	private ServiceRequestService serviceReqService;
+	
 	@ModelAttribute("uploadItem")
 	public UploadItem createUploadItem() 
 	{
@@ -149,6 +152,16 @@ public class UploadController extends AbstractAmiController {
 
 		return "uploadForm";
 	}
+	
+	 @RequestMapping(value = "/upload", method = RequestMethod.POST, params={"doneUploadingDocs"})
+	 public String doneUpladingDocs(Model model, @ModelAttribute UploadDocItem uploadItem, @RequestParam String doneUploadingDocs) {
+	        
+		 ServiceRequest svcReq = serviceReqService.findByRequestNumber(doneUploadingDocs);
+		 svcReq.setDoneUploadingDocs(true);
+		 
+		 serviceReqService.save(svcReq);
+		 return "redirect:/hospitalPendingRequest";
+	  }
 	
 //	@ExceptionHandler(Throwable.class)
 //	public 	ModelAndView handleException(Throwable exception)

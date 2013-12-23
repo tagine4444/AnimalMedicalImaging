@@ -120,6 +120,20 @@ public class ServiceRequest {
 	@Embedded
 	private ExamAttribute examAttribute;
 	
+	@Column(name="PAPER_DOC")
+	private boolean paperDocs = false;
+	
+	@Column(name="PAPER_DOCS_NOTES", length=1000)
+	private String docsNotes= "";
+	
+	@Column(name="DIGITAL_DOC")
+	private boolean digitalDocs = false;
+	
+	
+	@Column(name="DONE_UPLOADING_DIGITAL_DOC")
+	private boolean doneUploadingDocs = false;
+	
+	
 	
 	public ServiceRequest() {
 		this.hospitalAttribute = new HospitalAttribute();
@@ -1182,6 +1196,54 @@ public class ServiceRequest {
 		
 		
 		return "Missing the time unit y (years), m (months), d (days)";
+	}
+
+
+	public boolean isPaperDocs()
+	{
+		return paperDocs;
+	}
+
+
+	public void setPaperDocs(boolean paperDocs)
+	{
+		this.paperDocs = paperDocs;
+	}
+
+
+	public String getDocsNotes()
+	{
+		return docsNotes;
+	}
+
+
+	public void setDocsNotes(String docsNotes)
+	{
+		this.docsNotes = docsNotes;
+	}
+
+
+	public boolean isDigitalDocs()
+	{
+		return digitalDocs;
+	}
+
+
+	public void setDigitalDocs(boolean digitalDocs)
+	{
+		this.digitalDocs = digitalDocs;
+	}
+
+
+	public boolean isDoneUploadingDocs()
+	{
+		return doneUploadingDocs;
+	}
+
+
+	public void setDoneUploadingDocs(boolean doneUploadingDocs)
+	{
+		this.doneUploadingDocs = doneUploadingDocs;
 	}
 
 }

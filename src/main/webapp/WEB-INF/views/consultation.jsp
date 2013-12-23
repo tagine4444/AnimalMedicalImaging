@@ -48,7 +48,8 @@
 			<strong>HISTORY, CHIEF COMPLAIN, PHYSICAL FINDINGS (S.O.A.P)</strong>. Please provide a case <u>summary</u>, <strong>not the entire record.</strong>
 		</div>
 		<div class="span12">
-			<form:textarea path="consultation" rows="4" class="input-block-level"/>
+			<form:textarea id="consTxtId" path="consultation" rows="4" class="input-block-level" maxlength="3000"/>
+			<div id="consTxt_feedback"></div>
 		</div>
 		
 		
