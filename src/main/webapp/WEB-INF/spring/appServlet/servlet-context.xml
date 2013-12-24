@@ -10,7 +10,7 @@
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	   
 	<!-- Enables the Spring MVC @Controller programming model -->
-	<annotation-driven conversion-service="conversionService"/>
+<!-- 	<annotation-driven conversion-service="conversionService"/> -->
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
@@ -22,11 +22,6 @@
 	</beans:bean>
 	
 	
-	
-<!-- 	<context:component-scan base-package="com.bouacheria.ami.controller" /> -->
-<!-- 	<context:component-scan base-package="com.bouacheria.ami.service" /> -->
-<!-- 	<context:component-scan base-package="com.bouacheria.ami.security" /> -->
-<!-- 	<context:component-scan base-package="com.bouacheria.ami.*.config" /> -->
 	<context:component-scan base-package="com.bouacheria.ami.*" />
 	
 	<mvc:view-controller path="/" view-name="index"/>
@@ -36,21 +31,7 @@
 	<mvc:view-controller path="/ourservices" view-name="ourservices"/>
 	<mvc:view-controller path="/faq" view-name="faq"/>
 
-	<beans:bean id="amiServiceFormatter" class="com.bouacheria.ami.controller.formatter.AmiServiceFormatter" />
-	
-<!-- 	<beans:bean id="conversionService" -->
-<!-- 	    class="org.springframework.format.support.FormattingConversionServiceFactoryBean"> -->
-	   
-	   
-<!-- 	   <beans:property name="formatters"> -->
-<!-- 		   <beans:set> -->
-<!-- 		   		<beans:ref bean="amiServiceFormatter"/> -->
-<!-- 		   	</beans:set> -->
-<!-- 	   </beans:property> -->
-<!-- 	</beans:bean> -->
-	
-<!-- 	<mvc:annotation-driven conversion-service="conversionService" /> -->
-	
+<!-- 	<beans:bean id="amiServiceFormatter" class="com.bouacheria.ami.controller.formatter.AmiServiceFormatter" /> -->
 	
 	
 </beans:beans>

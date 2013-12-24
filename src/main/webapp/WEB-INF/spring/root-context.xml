@@ -47,7 +47,7 @@
 	   	</set>
 	   
 	   </property>
-	</bean>
+	</bean> 
 	
 	<mvc:annotation-driven conversion-service="conversionService" />
 		
