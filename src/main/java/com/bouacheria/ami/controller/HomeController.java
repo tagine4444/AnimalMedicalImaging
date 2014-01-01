@@ -4,10 +4,10 @@ import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.bouacheria.ami.repository.config.ConfigUtil;
 
 /**
  * Handles requests for the application home page.
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	@Autowired private ConfigUtil configUtil;
 	
 	
 	/**
@@ -25,6 +26,9 @@ public class HomeController {
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! the client locale is "+ locale.toString());
 		
+//		System.out.println(configUtil.toString());
+//		
+//		logger.info(configUtil.toString());
 		return "redirect:login";
 	}
 	

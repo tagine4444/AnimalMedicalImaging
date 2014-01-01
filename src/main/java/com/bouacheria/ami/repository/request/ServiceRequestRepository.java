@@ -38,16 +38,20 @@ public interface ServiceRequestRepository extends JpaRepository<ServiceRequest, 
 	@Query("select s from ServiceRequest s where s.hospitalId = ?1 and requestDate>=curdate() ORDER BY id")
 	List<ServiceRequest> findTodayRequestForHospital(long hospitalId);
 	
-	@Query("select s from ServiceRequest s where s.hospitalId = ?1 ORDER BY id DESC LIMIT 30")
+//	@Query("select s from ServiceRequest s where s.hospitalId = ?1 ORDER BY id DESC LIMIT 30")
+	@Query("select s from ServiceRequest s where s.hospitalId = ?1 ORDER BY id DESC")
 	List<ServiceRequest> findLas30RequestForHospital(long hospitalId);
 
-	@Query("select s from ServiceRequest s  ORDER BY id DESC LIMIT 60")
+//	@Query("select s from ServiceRequest s  ORDER BY id DESC LIMIT 60")
+	@Query("select s from ServiceRequest s  ORDER BY id DESC")
 	List<ServiceRequest> findLas60Request();
 	
-	@Query("select s from ServiceRequest s where s.hospitalId = ?1 and stat = true ORDER BY id DESC LIMIT 30")
+//	@Query("select s from ServiceRequest s where s.hospitalId = ?1 and stat = true ORDER BY id DESC LIMIT 30")
+	@Query("select s from ServiceRequest s where s.hospitalId = ?1 and stat = true ORDER BY id DESC")
 	List<ServiceRequest> findLas30STATRequestForHospital(long hospitalId);
 	
-	@Query("select s from ServiceRequest s where s.stat = true ORDER BY id DESC LIMIT 60")
+//	@Query("select s from ServiceRequest s where s.stat = true ORDER BY id DESC LIMIT 60")
+	@Query("select s from ServiceRequest s where s.stat = true ORDER BY id DESC")
 	List<ServiceRequest> findLas60STATRequest();
 	
 	@Query("select s from ServiceRequest s where s.hospitalId = ?1 and requestDate>=?2 and requestDate<=?3 ORDER BY id DESC")
@@ -60,7 +64,4 @@ public interface ServiceRequestRepository extends JpaRepository<ServiceRequest, 
 	@Query("select s from ServiceRequest s , Case c where s.caseId = c.id and c.capturedInQuickBook =?1  ORDER BY s.id")
 	List<ServiceRequest> findCaputredInQuickbook(boolean capturedInQuickBook);
 	
-//
-//	@Query("select s from ServiceRequest s where s.hospitalId = ?1 and requestDate =?2 ")
-//	List<ServiceRequest> findRequestForHospitalAndDateRange(long hospitalId,DateTime aDate);
 }

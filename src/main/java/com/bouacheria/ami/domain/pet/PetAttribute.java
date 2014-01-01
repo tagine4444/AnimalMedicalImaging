@@ -35,7 +35,7 @@ public class PetAttribute
 	
 	@NotEmpty(message="Age may not be empty")
 	@Column(name="AGE")
-	@Type(type="org.joda.time.contrib.hibernate.PersistentDateTime")
+	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	private DateTime dob = null;
 	
 	@Column(name="PATIENT_AGE", length=99)

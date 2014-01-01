@@ -39,7 +39,7 @@ public class Case
 	private Long requestId;
 	
 	@Column(name="REQUEST_DATE")
-	@Type(type="org.joda.time.contrib.hibernate.PersistentDateTime")
+	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	private DateTime requestDate = null;
 	
 	@Column(name="REQUEST_BY")
@@ -71,15 +71,15 @@ public class Case
 	private boolean stat = false;
 	
 	@Column(name="READING_INPROGRESS_DATE")
-	@Type(type="org.joda.time.contrib.hibernate.PersistentDateTime")
+	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	private DateTime readingInProgressDate= null;
 	
 	@Column(name="READING_COMPLETE_DATE")
-	@Type(type="org.joda.time.contrib.hibernate.PersistentDateTime")
+	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	private DateTime readingInCompleteDate= null;
 	
 	@Column(name="TRANSCRIPTION_COMPLETE_DATE")
-	@Type(type="org.joda.time.contrib.hibernate.PersistentDateTime")
+	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	private DateTime transcriptionCompleteDate= null;
 	
 	

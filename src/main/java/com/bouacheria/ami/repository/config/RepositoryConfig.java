@@ -68,9 +68,4 @@ public class RepositoryConfig {
 		return hibernateJpaVendorAdapter;
 	}
 	
-	@PostConstruct
-	public void printConfig()
-	{
-		System.out.println(configUtil.toString());
-	}
 }

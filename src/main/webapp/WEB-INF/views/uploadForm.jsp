@@ -58,10 +58,10 @@
 							<li>Upload the selected file by clicking the upload button:
 								<input type="submit" name="uploadFile" value="uploadFile"/>
                 			</li>
-							<li>When you are done uploading the document, click on the Submit Request button
-								below (in red) to make your request visible to the radiologist. 
+							<li>
+								<button type="submit" name="doneUploadingDocs" value="${uploadItem.requestNumber}" class="btn" ><font color="red">Done Uploading, Ready for Radiologist</font></button>
 								<br><b>Note</b> The radiologist will not treat your request until
-								click on the submit button. 
+								click on this button. 
                 			</li>
                 		</ol>
                 	</div>
@@ -102,11 +102,7 @@
 			</table>
 			
 			<p>
-				I am done uploading documents. 
 <%-- 				<input type="submit" name="uploadFile" value="${uploadItem.requestNumber}" style="color: red"/> --%>
-				<div class="span12">
-     		   		<button type="submit" name="doneUploadingDocs" value="${uploadItem.requestNumber}" class="btn" ><font color="red">Notify Radiologist</font></button>
-	    		</div>
             </p>
             
         </form:form>

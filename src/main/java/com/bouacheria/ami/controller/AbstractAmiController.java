@@ -17,4 +17,28 @@ public abstract class AbstractAmiController
 		view.addObject("errorString", ExceptionUtils.getStackTrace(exception));
 		return view;
 	}
+	@ExceptionHandler(Exception.class)
+	public 	ModelAndView handleException(Exception exception)
+	{
+		ModelAndView view = new ModelAndView();
+		view.setViewName("errorPage");
+		view.addObject("errorString", ExceptionUtils.getStackTrace(exception));
+		return view;
+	}
+	@ExceptionHandler(RuntimeException.class)
+	public 	ModelAndView handleException(RuntimeException exception)
+	{
+		ModelAndView view = new ModelAndView();
+		view.setViewName("errorPage");
+		view.addObject("errorString", ExceptionUtils.getStackTrace(exception));
+		return view;
+	}
+	@ExceptionHandler(IllegalArgumentException.class)
+	public 	ModelAndView handleException(IllegalArgumentException exception)
+	{
+		ModelAndView view = new ModelAndView();
+		view.setViewName("errorPage");
+		view.addObject("errorString", ExceptionUtils.getStackTrace(exception));
+		return view;
+	}
 }

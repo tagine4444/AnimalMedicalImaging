@@ -57,7 +57,7 @@ public class AMIUser {
 	private String email;
 	
 	@Column(name="DELETE_DATE")
-	@Type(type="org.joda.time.contrib.hibernate.PersistentDateTime")
+	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	private DateTime deleteTime;
 	
 	@Column(name="DELETE_STRING")

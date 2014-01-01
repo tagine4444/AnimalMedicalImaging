@@ -11,9 +11,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import com.bouacheria.ami.constants.AMIConstants;
+import com.jolbox.bonecp.BoneCPDataSource;
 
 @Configuration
 @ComponentScan(basePackages="com.bouacheria.ami.repository" )
@@ -31,16 +31,21 @@ public class MySqlRepoLocal {
 		String user = (String)amiProperties.get("local.db.user");
 		String pwd  = (String)amiProperties.get("local.db.pwd");
 		String url  = (String)amiProperties.get("local.db.url");
-		
-		System.out.println("====>dburl:  " +url);
-		
-		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-//		dataSource.setUrl(LoginController.getDbUrl());
-//		dataSource.setUrl("jdbc:mysql://localhost:3306/amischema");
-		dataSource.setUrl(url);
+
+		logger.info("====>dburl:  " +url);
+//		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		BoneCPDataSource dataSource = new BoneCPDataSource();
+		dataSource.setDriverClass("com.mysql.jdbc.Driver");
+		dataSource.setJdbcUrl(url);
 		dataSource.setUsername(user);
 		dataSource.setPassword(pwd);
+		dataSource.setPartitionCount(3);
+		dataSource.setAcquireIncrement(5);
+		dataSource.setMaxConnectionsPerPartition(20);
+		dataSource.setMinConnectionsPerPartition(5);
+		dataSource.setStatementsCacheSize(5);		
+		
+		System.out.println("====>dburl:  datasource done" );
 		return dataSource;
 	}
 	

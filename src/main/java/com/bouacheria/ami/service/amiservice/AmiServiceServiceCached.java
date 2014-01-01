@@ -66,21 +66,11 @@ public class AmiServiceServiceCached {
 		return cacheId.get(id);
 	}
 	
-//	public void loadData()
-//	{
-//		if(config.isLoadData())
-//		{
-//			deleteMeService.load();
-//		}
-//		//serviceRequestNotificationCache.cachEmail();
-//	}
 	
-//	@PostConstruct
 	public void init() 
 	{
 		
 		initCategories();
-		//loadData();
 		
 		allServices = amiService.findAll();
 		

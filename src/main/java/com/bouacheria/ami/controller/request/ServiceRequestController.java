@@ -3,6 +3,7 @@ package com.bouacheria.ami.controller.request;
 import javax.validation.Valid;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.exception.ExceptionUtils;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.bouacheria.ami.controller.AbstractAmiController;
 import com.bouacheria.ami.controller.ServiceRequestAndCaseHelper;
@@ -30,7 +32,9 @@ import com.bouacheria.ami.service.request.ServiceRequestService;
  * Handles requests for the application home page.
  */
 @Controller
-public class ServiceRequestController extends AbstractAmiController{
+public class ServiceRequestController 
+//extends AbstractAmiController
+{
 	
 	private static final Logger logger = LoggerFactory.getLogger(ServiceRequestController.class);
 	
@@ -85,79 +89,89 @@ public class ServiceRequestController extends AbstractAmiController{
 			return "serviceRequest";
 		}
 		
-		String ageError = serviceRequest.isValidPatientAge();
-		if(StringUtils.isNotEmpty(ageError))
+		try
 		{
-			serviceRequestAndCaseHelper.addRefDataToModel(model);
-			model.addAttribute("serviceRequestMessage", "The patient age is Invalid. Click on the Help link next to the Patient Age label for valid examples.");
-			model.addAttribute("ageError", ageError );
-			return "serviceRequest";
-		}
-		if(!serviceRequest.isInterpretationOnly() && !serviceRequest.hasAtLeastOneImagingServie())
-		{
-			serviceRequestAndCaseHelper.addRefDataToModel(model);
-			model.addAttribute("serviceRequestMessage", "You must select at least one service if you have selected the imaging service type");
-			return "serviceRequest";
-		}
-		
-		serviceRequest.upperCaseFields();
-		
-		
-		
-		Hospital hospital = securityUtil.getHospitalForLoggedinUser();
-		Long hospitalId = hospital.getId();
-		
-		serviceRequest.setHospitalAttribute(hospital.getHospitalAttribute());
-		serviceRequest.setPriority(hospital.getPriority());
-		serviceRequest.setHospitalId(hospitalId);
-		serviceRequest.setCaseStatus("Interpretation Requested");
-		serviceRequest.setUnderContract(hospital.isUnderContract());
-		serviceRequest.setRequestDate(new DateTime());
-		
-		if(!serviceRequest.hasRequestNumber() && hospital.isUnderContract())
-		{
-			String requestNumber = requestNumberGeneratorService.getRequestNumber(hospitalId, hospital.getAcronym());
-			serviceRequest.setRequestNumber(requestNumber);
-		}
-		
-		
-		ServiceRequest savedReq = serviceRequestService.save(serviceRequest);
-		// check if it already has a number (on update). if it does, don't change it
-		if(!serviceRequest.hasRequestNumber() && !hospital.isUnderContract())
-		{
-			savedReq.setRequestNumber(String.valueOf(savedReq.getId()));
 			
-			ServiceRequest savedReq1 = serviceRequestService.save(serviceRequest);
-			model.addAttribute("serviceRequest", savedReq1);
-		}
-		else
-		{
-			model.addAttribute("serviceRequest", savedReq);
-			String emailBody = getEmailBody(savedReq , true);
-			String stat = " ";
-			if(savedReq.isStat())
+			String ageError = serviceRequest.isValidPatientAge();
+			if(StringUtils.isNotEmpty(ageError))
 			{
-				stat = " STAT ";
+				serviceRequestAndCaseHelper.addRefDataToModel(model);
+				model.addAttribute("serviceRequestMessage", "The patient age is Invalid. Click on the Help link next to the Patient Age label for valid examples.");
+				model.addAttribute("ageError", ageError );
+				return "serviceRequest";
+			}
+			if(!serviceRequest.isInterpretationOnly() && !serviceRequest.hasAtLeastOneImagingServie())
+			{
+				serviceRequestAndCaseHelper.addRefDataToModel(model);
+				model.addAttribute("serviceRequestMessage", "You must select at least one service if you have selected the imaging service type");
+				return "serviceRequest";
 			}
 			
-			String from = config.getAmiEmail();
+			serviceRequest.upperCaseFields();
 			
-			String hospitalEmail = hospital.getHospitalEmail();
-			//String userEmail = securityUtil.getLoggedinUserEmail();
 			
-			String to = emailService.getTo(hospitalEmail);
-
-			if(config.isEmailEnabled())
+			
+			Hospital hospital = securityUtil.getHospitalForLoggedinUser();
+			Long hospitalId = hospital.getId();
+			
+			serviceRequest.setHospitalAttribute(hospital.getHospitalAttribute());
+			serviceRequest.setPriority(hospital.getPriority());
+			serviceRequest.setHospitalId(hospitalId);
+			serviceRequest.setCaseStatus("Interpretation Requested");
+			serviceRequest.setUnderContract(hospital.isUnderContract());
+			serviceRequest.setRequestDate(new DateTime());
+			
+			if(!serviceRequest.hasRequestNumber() && hospital.isUnderContract())
 			{
-				emailService.sendMail(from, to, "New"+stat+ "Service Request" + savedReq.getRequestNumber() , emailBody);
+				String requestNumber = requestNumberGeneratorService.getRequestNumber(hospitalId, hospital.getAcronym());
+				serviceRequest.setRequestNumber(requestNumber);
 			}
+			
+			
+			ServiceRequest savedReq = serviceRequestService.save(serviceRequest);
+			// check if it already has a number (on update). if it does, don't change it
+			if(!serviceRequest.hasRequestNumber() && !hospital.isUnderContract())
+			{
+				savedReq.setRequestNumber(String.valueOf(savedReq.getId()));
+				
+				ServiceRequest savedReq1 = serviceRequestService.save(serviceRequest);
+				model.addAttribute("serviceRequest", savedReq1);
+			}
+			else
+			{
+				model.addAttribute("serviceRequest", savedReq);
+				String emailBody = getEmailBody(savedReq , true);
+				String stat = " ";
+				if(savedReq.isStat())
+				{
+					stat = " STAT ";
+				}
+				
+				String from = config.getAmiEmail();
+				
+				String hospitalEmail = hospital.getHospitalEmail();
+				//String userEmail = securityUtil.getLoggedinUserEmail();
+				
+				String to = emailService.getTo(hospitalEmail);
+	
+				if(config.isEmailEnabled())
+				{
+					emailService.sendMail(from, to, "New"+stat+ "Service Request" + savedReq.getRequestNumber() , emailBody);
+				}
+			}
+			
+			if(savedReq.isDigitalDocs())
+			{
+				return "redirect:upload?svcReqId="+savedReq.getId()+"&requestNumber="+savedReq.getRequestNumber();
+			}
+			return "redirect:hospitalPendingRequest";
 		}
-		
-		if(savedReq.isDigitalDocs())
+		catch (Exception e)
 		{
-			return "redirect:upload?svcReqId="+savedReq.getId()+"&requestNumber="+savedReq.getRequestNumber();
+			logger.error("SaveServiceRequest Failed",e);
+			model.addAttribute("errorString", ExceptionUtils.getStackTrace(e));
+			return "errorPage";
 		}
-		return "redirect:hospitalPendingRequest";
 	}
 	
 	private String getEmailBody(ServiceRequest savedReq, boolean isUpdate)

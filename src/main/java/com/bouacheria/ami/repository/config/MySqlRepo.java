@@ -11,9 +11,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import com.bouacheria.ami.constants.AMIConstants;
+import com.jolbox.bonecp.BoneCPDataSource;
 
 @Configuration
 @ComponentScan(basePackages="com.bouacheria.ami.repository" )
@@ -25,22 +25,6 @@ public class MySqlRepo {
 	@Resource(name = "amiProperties")
 	private Properties amiProperties;
 	
-/*	
-	@Bean
-	public DataSource dataSource(){
-		
-		
-		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-//		dataSource.setUrl(LoginController.getDbUrl());
-//		dataSource.setUrl("jdbc:mysql://localhost:3306/amischema");
-		dataSource.setUrl("jdbc:mysql://ec2-23-21-211-172.compute-1.amazonaws.com:3306/amischema");
-		dataSource.setUsername("ami");
-		dataSource.setPassword("ami");
-		return dataSource;
-	}
-*/
-	
 	@Bean
 	public DataSource dataSource(){
 		
@@ -48,13 +32,19 @@ public class MySqlRepo {
 		String pwd  = (String)amiProperties.get("db.pwd");
 		String url  = (String)amiProperties.get("db.url");
 		
-		System.out.println("====>dburl:  " +url);
+		logger.info("====>dburl:  " +url);
 		
-		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl(url);
+		BoneCPDataSource dataSource = new BoneCPDataSource();
+		dataSource.setDriverClass("com.mysql.jdbc.Driver");
+		dataSource.setJdbcUrl(url);
 		dataSource.setUsername(user);
 		dataSource.setPassword(pwd);
+//		dataSource.setPartitionCount(1);
+		dataSource.setAcquireIncrement(2);
+		dataSource.setMaxConnectionsPerPartition(10);
+		dataSource.setMinConnectionsPerPartition(2);
+		dataSource.setStatementsCacheSize(2);		
+		
 		return dataSource;
 	}
 	

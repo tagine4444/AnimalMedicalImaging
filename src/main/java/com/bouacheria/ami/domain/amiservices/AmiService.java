@@ -36,7 +36,7 @@ public class AmiService implements Comparable<String>
 	private String description = null;
 	
 	@Column(name="DEACTIVATED_DATE")
-	@Type(type="org.joda.time.contrib.hibernate.PersistentDateTime")
+	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	private DateTime deactivatedDate = null;
 	
 	@Column(name="DEACTIVATED_BY")

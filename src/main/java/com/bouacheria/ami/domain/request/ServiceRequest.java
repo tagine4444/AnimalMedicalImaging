@@ -53,7 +53,8 @@ public class ServiceRequest {
 	private int priority =0;
 	
 	@Column(name="REQUEST_DATE")
-	@Type(type="org.joda.time.contrib.hibernate.PersistentDateTime")
+//	@Type(type="org.joda.time.contrib.hibernate.PersistentDateTime")
+	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	private DateTime requestDate = null;
 	
 	@NotEmpty(message="may not be empty")
@@ -79,16 +80,16 @@ public class ServiceRequest {
 	private boolean stat = false;
 	
 	@Column(name="INPROGRESS_DATE")
-	@Type(type="org.joda.time.contrib.hibernate.PersistentDateTime")
+	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	private DateTime inProgressDate= null;
 	
 	@Column(name="READING_COMPLETE_DATE")
-	@Type(type="org.joda.time.contrib.hibernate.PersistentDateTime")
+	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	private DateTime readingInCompleteDate= null;
 	
 	
 	@Column(name="TRANSCRIBED_DATE")
-	@Type(type="org.joda.time.contrib.hibernate.PersistentDateTime")
+	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	private DateTime trascribedDate= null;
 	
 	@Embedded
