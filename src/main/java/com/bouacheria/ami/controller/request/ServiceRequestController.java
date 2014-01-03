@@ -160,7 +160,7 @@ public class ServiceRequestController
 				}
 			}
 			
-			if(savedReq.isDigitalDocs())
+			if(savedReq.isDocByUpload())
 			{
 				return "redirect:upload?svcReqId="+savedReq.getId()+"&requestNumber="+savedReq.getRequestNumber();
 			}

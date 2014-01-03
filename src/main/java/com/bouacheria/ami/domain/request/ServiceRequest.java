@@ -10,9 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import javax.validation.constraints.Min;
 
-import org.apache.commons.lang.NumberUtils;
 import org.apache.commons.lang.StringUtils;
 import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotBlank;
@@ -127,10 +125,19 @@ public class ServiceRequest {
 	@Column(name="PAPER_DOCS_NOTES", length=1000)
 	private String docsNotes= "";
 	
-	@Column(name="DIGITAL_DOC")
-	private boolean digitalDocs = false;
+	@Column(name="DOC_BY_EMAIL")
+	private boolean docByEmail= false;
 	
+	@Column(name="DOC_BY_UPLOAD")
+	private boolean docByUpload= false;
 	
+	@Column(name="DOC_BY_CARRIER")
+	private boolean docByCarrier= false;
+	
+//	@Column(name="DIGITAL_DOC")
+//	private boolean digitalDocs = false;
+//	
+//	
 	@Column(name="DONE_UPLOADING_DIGITAL_DOC")
 	private boolean doneUploadingDocs = false;
 	
@@ -1224,15 +1231,39 @@ public class ServiceRequest {
 	}
 
 
-	public boolean isDigitalDocs()
+	public boolean isDocByEmail()
 	{
-		return digitalDocs;
+		return docByEmail;
 	}
 
 
-	public void setDigitalDocs(boolean digitalDocs)
+	public void setDocByEmail(boolean docByEmail)
 	{
-		this.digitalDocs = digitalDocs;
+		this.docByEmail = docByEmail;
+	}
+
+
+	public boolean isDocByUpload()
+	{
+		return docByUpload;
+	}
+
+
+	public void setDocByUpload(boolean docByUpload)
+	{
+		this.docByUpload = docByUpload;
+	}
+
+
+	public boolean isDocByCarrier()
+	{
+		return docByCarrier;
+	}
+
+
+	public void setDocByCarrier(boolean docByCarrier)
+	{
+		this.docByCarrier = docByCarrier;
 	}
 
 

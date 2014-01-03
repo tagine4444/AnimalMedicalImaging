@@ -1,7 +1,5 @@
 package com.bouacheria.ami.domain.cases;
 
-import java.util.Locale;
-
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -11,11 +9,8 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import net.sf.cglib.core.Local;
-
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
-import org.springframework.format.datetime.DateFormatter;
 
 import com.bouacheria.ami.domain.Services;
 import com.bouacheria.ami.domain.client.ClientAttribute;
@@ -122,6 +117,18 @@ public class Case
 	
 	@Column(name="notes", length=3000)
 	private String notes;
+	
+	@Column(name="DOC_BY_EMAIL")
+	private boolean docByEmail= false;
+	
+	@Column(name="DOC_BY_UPLOAD")
+	private boolean docByUpload= false;
+	
+	@Column(name="DOC_BY_CARRIER")
+	private boolean docByCarrier= false;
+	
+	@Column(name="PAPER_DOCS_NOTES", length=1000)
+	private String docsNotes= "";
 	
 	
 	public Case() {
@@ -862,6 +869,10 @@ public class Case
 		setUnderContract(serviceReq.isUnderContract());
 		setCapturedInQuickBook(false);
 		setHasDocuments(serviceReq.isHasDocuments());
+		setDocByCarrier(serviceReq.isDocByCarrier());
+		setDocByEmail(serviceReq.isDocByEmail());
+		setDocByUpload(serviceReq.isDocByUpload());
+		setDocsNotes(serviceReq.getDocsNotes());
 		
 	}
 
@@ -960,6 +971,54 @@ public class Case
 	public void setHasDocuments(boolean hasDocuments)
 	{
 		this.hasDocuments = hasDocuments;
+	}
+
+
+	public boolean isDocByEmail()
+	{
+		return docByEmail;
+	}
+
+
+	public void setDocByEmail(boolean docByEmail)
+	{
+		this.docByEmail = docByEmail;
+	}
+
+
+	public boolean isDocByUpload()
+	{
+		return docByUpload;
+	}
+
+
+	public void setDocByUpload(boolean docByUpload)
+	{
+		this.docByUpload = docByUpload;
+	}
+
+
+	public boolean isDocByCarrier()
+	{
+		return docByCarrier;
+	}
+
+
+	public void setDocByCarrier(boolean docByCarrier)
+	{
+		this.docByCarrier = docByCarrier;
+	}
+
+
+	public String getDocsNotes()
+	{
+		return docsNotes;
+	}
+
+
+	public void setDocsNotes(String docsNotes)
+	{
+		this.docsNotes = docsNotes;
 	}
 
 }

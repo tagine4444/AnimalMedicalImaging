@@ -99,12 +99,12 @@
 				      <button type="submit" name="searchRequestNumber" value="searchRequestNumber" class="btn" onclick="$.blockUI();">Search</button>
 				</div>
 				<br/><br/><br/><br/>
-				<div class="span12">
+<!-- 				<div class="span12"> -->
 					
-				      <button type="submit" name="last30" class="btn" onclick="$.blockUI();">Last 30 Requests</button>
-				      <button type="submit" name=last30Stat class="btn" onclick="$.blockUI();">Last 30 STATs</button>
-				</div>
-				<br/><br/><br/><br/>
+<!-- 				      <button type="submit" name="last30" class="btn" onclick="$.blockUI();">Last 30 Requests</button> -->
+<!-- 				      <button type="submit" name=last30Stat class="btn" onclick="$.blockUI();">Last 30 STATs</button> -->
+<!-- 				</div> -->
+				<br/>
 				  	
 			</div>
 			

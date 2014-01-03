@@ -53,7 +53,7 @@
 <div class="container row">
 	<div class="span12">
 		<p>
-			Requests listed on this page have been completed. 
+			Requests listed on this page have been completed today. 
 			<a href="${rootUrl}hospitalPendingRequest">Pending Interpretation are availabe here</a> or on the menu.
 		</p>
 	</div>
@@ -75,7 +75,7 @@
 						<tr>
 							<td><joda:format value="${aRequestCompleted.requestDate}" pattern="MM/dd/yy HH:mm" /></td>					
 							<td>${aRequestCompleted.clientLastName}, ${aRequestCompleted.clientFirstName} - ${aRequestCompleted.clientId}</td>					
-							<td>"${aRequestCompleted.patientName}"</td>					
+							<td>${aRequestCompleted.patientName}</td>					
 				            <td><a href="${rootUrl}case?readonly=${aRequestCompleted.caseId}">View Interpretation</a></td>
 						</tr>
 					</c:forEach>
@@ -98,7 +98,7 @@
 						<tr>
 							<td><joda:format value="${aRequestCompleted.requestDate}" pattern="MM/dd/yy HH:mm" /></td>					
 							<td>${aRequestCompleted.clientLastName}, ${aRequestCompleted.clientFirstName} - ${aRequestCompleted.clientId}</td>					
-							<td>"${aRequestCompleted.patientName}"</td>					
+							<td>${aRequestCompleted.patientName}</td>					
 				            <td><a href="${rootUrl}case?readonly=${aRequestCompleted.caseId}">View Interpretation</a></td>
 						</tr>
 					</c:forEach>

@@ -66,32 +66,11 @@ table,th, td
 			
 			<table class="table table-bordered">
 			        <tr>
-			            
-<!-- 			            <th>Documents</th> -->
-<!-- 			            <th>Veterinarian</th> -->
 			            <th>Client Name</th>
 			            <th>Client ID</th>
 			            <th>Is client an employee?</th>
-<!-- 			            <th>Patient</th> -->
-<!-- 			            <th>Age</th> -->
-<!-- 			            <th>Species</th> -->
-<!-- 			            <th>Breed</th> -->
-<!-- 			            <th>Sex</th> -->
-<!-- 			            <th>Weight</th> -->
-			             
-<!-- 			            <th>Lab</th> -->
-<!-- 			            <th>Requested</th> -->
-<!-- 			           <th>Completed</th> -->
 			        </tr>
 					<tr>
-<!-- 						<td> -->
-<%-- 							<c:if test="${aCase.hasDocuments}"> --%>
-<%-- 								<a href="${rootUrl}uploadedDocuments?svcReqId=${aCase.requestId}">Uploaded Documents</a> --%>
-<%-- 							</c:if> --%>
-<!-- 						</td> -->
-						
-<%-- 						<td>${aCase.veterinarian}</td> --%>
-						
 						<td>${aCase.clientLastName}, ${aCase.clientFirstName} </td>					
 						<td>${aCase.clientId}</td>					
 						<td>
@@ -104,22 +83,53 @@ table,th, td
 								</c:otherwise>
 							</c:choose>
 						</td>					
-<%-- 						<td>${aCase.patientName}</td>					 --%>
-<%-- 						<td>${aCase.patientAge}</td>					 --%>
-<%-- 						<td>${aCase.patientSpecies} </td>					 --%>
-<%-- 						<td>${aCase.patientBreed} </td>					 --%>
-<%-- 						<td>${aCase.patientSex} </td>					 --%>
-<%-- 						<td>${aCase.patientWeight} ${aCase.patientWeightUom}</td>		 --%>
+					</tr>
+			</table><table class="table table-bordered">
+			        <tr>
+			            <th>Documents Provided By Email</th>
+			            <th>Documents Provided By Carrier</th>
+			            <th>Documents Uploaded</th>
+			        </tr>
+					<tr>
+						<td> 
+							<c:choose>
+								<c:when test="${aCase.docByEmail}">
+									<b><font color="red"> Yes</font></b>
+								</c:when>
+								<c:otherwise>
+									No
+								</c:otherwise>
+							</c:choose>
 						
-			            
-<%-- 			            <td>${aCase.lab} - ${aCase.labAccount} </td> --%>
-			            
-<%-- 			            <td><joda:format value="${aCase.requestDate}" pattern="MM/dd/yy" /></td>		 --%>
-<%-- 			            <td><joda:format value="${aCase.transcriptionCompleteDate}" pattern="MM/dd/yy" /></td>	 --%>
+						</td>					
+						<td>
+							<c:choose>
+								<c:when test="${aCase.docByCarrier}">
+									<b><font color="red"> Yes</font></b>
+								</c:when>
+								<c:otherwise>
+									No
+								</c:otherwise>
+							</c:choose>
+						
+						</td>					
+						<td>
+							<c:choose>
+								<c:when test="${aCase.docByUpload}">
+									<b><font color="red"> Yes</font></b>
+								</c:when>
+								<c:otherwise>
+									No
+								</c:otherwise>
+							</c:choose>
+						</td>					
+											
 					</tr>
 			</table>
 	</div>
-			
+	<div class="span12">
+		<pre><u><b>Notes</b></u><br/><form:label  path="docsNotes" >${aCase.docsNotes}</form:label></pre>
+	</div>			
 </div>
 </div>
 	
