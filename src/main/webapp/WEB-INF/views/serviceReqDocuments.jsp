@@ -22,7 +22,7 @@
 		<fieldset>
 			<div class="span12">
 				<div class="span12">
-					<legend>Documents </legend>
+					<legend>Images / Documents</legend>
 
 
 
@@ -31,7 +31,7 @@
 
 						<div class="span12">
 							<div class="control-group">
-								<label class="control-label">I am providing documents with this request</label>
+								<label class="control-label">I am providing Images / documents with this request</label>
 
 								<div class="span12">
 									<label class="checkbox inline">
@@ -48,20 +48,16 @@
 						</div>
 
 						<div class="span12">
-						<div class="span12">
-							<span><b>Notes</b></span>
-							<i>Please add some notes about the documents you are providing with this request </i>
-							<form:textarea id="docsNotesId" path="docsNotes" rows="4" placeholder="Please Provide any details that will help us identify ALL the documents that go with this request." 
-								class="input-block-level" maxlength="1000" />
-						</div>
+							<div class="span12">
+								<ul >
+									<li id="emailUlId" style="visibility: hidden;" >Please provide the Request Number in the subject of the email. The Request Number is shown at the top of the page after successfully submitting this Request</li>
+									<li id="carrierUlId" style="visibility: hidden;">Please print this request and include it in the carrier's envelope</li>
+									<li id="uploadUlId" style="visibility: hidden;">Please indicate in the notes section above the number of documents will be uploading if you know it</li>
+								</ul>
+								<form:textarea id="docsNotesId" path="docsNotes" rows="4" placeholder="Please Provide any details that will help us identify ALL the documents that go with this request." 
+									class="input-block-level" maxlength="1000" />
+							</div>
 
-						<div id="divCaption" class="span12">
-									<ul >
-										<li id="emailUlId" style="visibility: hidden;" >Please provide the Request Number in the subject of the email. The Request Number is shown at the top of the page after successfully submitting this Request</li>
-										<li id="carrierUlId" style="visibility: hidden;">Please print this request and include it in the carrier's envelope</li>
-										<li id="uploadUlId" style="visibility: hidden;">Please indicate in the notes section above the number of documents will be uploading if you know it</li>
-									</ul>
-								</div>
 
 
 					</div>

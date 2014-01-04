@@ -10,7 +10,8 @@
 	<div class="span12">
 	
 		<div class="span12">
-			<form:textarea path="tentativeDiagnosis"  rows="4" class="input-block-level"/>
+			<form:textarea id="diagnosisTxtId" path="tentativeDiagnosis"  rows="4" class="input-block-level"/>
+			<div id="diagnosisTxt_feedback"></div>
 		</div>
 		<br/>
 		

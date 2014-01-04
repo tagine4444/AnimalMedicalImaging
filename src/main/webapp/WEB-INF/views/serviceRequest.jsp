@@ -33,6 +33,19 @@
 	    
 	    
 	    var text_max = 3000;
+	    
+	    
+	    $('#diagnosisTxt_feedback').html(text_max + ' characters remaining');
+
+	    $('#diagnosisTxtId').keyup(function() {
+	        var text_length = $('#diagnosisTxtId').val().length;
+	        var text_remaining = text_max - text_length;
+
+	        $('#diagnosisTxt_feedback').html(text_remaining + ' characters remaining');
+	    });
+	    
+	    
+	    
 	    $('#consTxt_feedback').html(text_max + ' characters remaining');
 
 	    $('#consTxtId').keyup(function() {
@@ -42,6 +55,8 @@
 	        $('#consTxt_feedback').html(text_remaining + ' characters remaining');
 	    });
 	    
+	    
+	    
 	});
 	</script>
 	
@@ -50,7 +65,6 @@
 	
 <body>
 <div class="container-fluid">	
-
 	
 		<div class="navbar">
 		 	<div class="navbar-inner">
