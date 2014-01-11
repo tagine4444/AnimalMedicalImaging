@@ -342,7 +342,7 @@
 		         <releaseProfiles>release</releaseProfiles>
 		         <autoVersionSubmodules>true</autoVersionSubmodules>
 			       <checkModificationExcludes>
-			       		<checkModificationExclude>src/main/resources/ami.properties</checkModificationExclude>
+			       		<checkModificationExclude>ami.properties</checkModificationExclude>
 			       </checkModificationExcludes>
 			       <checkModificationExcludes>
 			       		<checkModificationExclude>target/m2e-wtp/web-resources/META-INF/maven/com.animalmedicalimaging.chuckroot/ami/pom.properties</checkModificationExclude>
