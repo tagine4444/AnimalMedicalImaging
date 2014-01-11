@@ -20,37 +20,22 @@
 <!-- 		<system>GitHub Issues</system> -->
 <!-- 	</issueManagement> -->
 	
-<!-- 	<distributionManagement> -->
-<!-- 	  <repository> -->
-<!-- 	    <id>bintray</id> -->
-<!-- 	    <url>http://dl.bintray.com/tagine4444/maven/AnimalMedicalImaging</url> -->
-	    
-<!-- 	  </repository> -->
-<!-- 	</distributionManagement> -->
-	
 	<distributionManagement>
-		<downloadUrl>https://github.com/tagine4444/AnimalMedicalImaging</downloadUrl>
-		<repository>
-		<id>amiami-cloudbees-release</id>
-		<name>amiami-cloudbees-release</name>
-		<url>dav:https://repository-amiami.forge.cloudbees.com/release/</url>
-		</repository>
-		<snapshotRepository>
-		<id>amiami-cloudbees-snapshot</id>
-		<name>amiami-cloudbees-snapshot</name>
-		<url>dav:https://repository-amiami.forge.cloudbees.com/snapshot/</url>
-		</snapshotRepository>
+	  <repository>
+	    <id>bintray</id>
+<!-- 	    <url>https://api.bintray.com/maven/tagine4444/maven/AnimalMedicalImaging</url> -->
+	    <url>http://dl.bintray.com/tagine4444/maven/AnimalMedicalImaging</url>
+	    
+	  </repository>
 	</distributionManagement>
-	
-	
 
 	<scm>
 	    <connection>scm:git:ssh://github.com/tagine4444/AnimalMedicalImaging.git</connection>
 	    <developerConnection>scm:git:ssh://github.com/tagine4444/AnimalMedicalImaging.git</developerConnection>
-<!-- 	    <url>https://github.com/tagine4444/AnimalMedicalImaging.git</url> -->
-	    <url>git:ssh://github.com/tagine4444/AnimalMedicalImaging.git</url>
+	    <url>https://github.com/tagine4444/AnimalMedicalImaging.git</url>
   </scm> 
-   
+
+
 	<dependencies>
 		<!-- Spring -->
 		<dependency>
@@ -333,26 +318,26 @@
 	</dependencies>
     <build>
         <plugins>
-        	<plugin>
-		        <groupId>org.apache.maven.plugins</groupId>
-		        <artifactId>maven-release-plugin</artifactId>
-		        <version>2.4.1</version>
-		        <configuration>
-		         <useReleaseProfile>false</useReleaseProfile>
-		         <releaseProfiles>release</releaseProfiles>
-		         <autoVersionSubmodules>true</autoVersionSubmodules>
-			       <checkModificationExcludes>
-			       		<checkModificationExclude>src/main/resources/ami.properties</checkModificationExclude>
-			       </checkModificationExcludes>
-			       <checkModificationExcludes>
-			       		<checkModificationExclude>target/m2e-wtp/web-resources/META-INF/maven/com.animalmedicalimaging.chuckroot/ami/pom.properties</checkModificationExclude>
-			       </checkModificationExcludes>
-			       <checkModificationExcludes>
-			       		<checkModificationExclude>target/m2e-wtp/web-resources/META-INF/maven/com.animalmedicalimaging.chuckroot/ami/pom.xml</checkModificationExclude>
-			       </checkModificationExcludes>
-		        </configuration>
+<!--         	<plugin> -->
+<!-- 		        <groupId>org.apache.maven.plugins</groupId> -->
+<!-- 		        <artifactId>maven-release-plugin</artifactId> -->
+<!-- 		        <version>2.4.1</version> -->
+<!-- 		        <configuration> -->
+<!-- 		         <useReleaseProfile>false</useReleaseProfile> -->
+<!-- 		         <releaseProfiles>release</releaseProfiles> -->
+<!-- 		         <autoVersionSubmodules>true</autoVersionSubmodules> -->
+<!-- 			       <checkModificationExcludes> -->
+<!-- 			       		<checkModificationExclude>src/main/resources/ami.properties</checkModificationExclude> -->
+<!-- 			       </checkModificationExcludes> -->
+<!-- 			       <checkModificationExcludes> -->
+<!-- 			       		<checkModificationExclude>target/m2e-wtp/web-resources/META-INF/maven/com.animalmedicalimaging.chuckroot/ami/pom.properties</checkModificationExclude> -->
+<!-- 			       </checkModificationExcludes> -->
+<!-- 			       <checkModificationExcludes> -->
+<!-- 			       		<checkModificationExclude>target/m2e-wtp/web-resources/META-INF/maven/com.animalmedicalimaging.chuckroot/ami/pom.xml</checkModificationExclude> -->
+<!-- 			       </checkModificationExcludes> -->
+<!-- 		        </configuration> -->
 		        
-		    </plugin>
+<!-- 		    </plugin> -->
             <plugin>
                 <artifactId>maven-eclipse-plugin</artifactId>
                 <version>2.9</version>
