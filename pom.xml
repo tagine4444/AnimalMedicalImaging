@@ -46,9 +46,10 @@
 
 	<scm>
 	    <connection>scm:git:ssh://github.com/tagine4444/AnimalMedicalImaging.git</connection>
-	    <developerConnection>scm:git:ssh://github.com/tagine4444/AnimalMedicalImaging.git</developerConnection>
+	    <developerConnection>scm:git@github.com:tagine4444/AnimalMedicalImaging.git</developerConnection>
 <!-- 	    <url>https://github.com/tagine4444/AnimalMedicalImaging.git</url> -->
 	    <url>git:ssh://github.com/tagine4444/AnimalMedicalImaging.git</url>
+	    
     <tag>ami-2.0.10</tag>
   </scm> 
    
