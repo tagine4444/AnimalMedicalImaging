@@ -51,6 +51,24 @@
 	    <url>git:ssh://github.com/tagine4444/AnimalMedicalImaging.git</url>
 	    
   </scm> 
+  
+  <reporting>
+   <plugins>
+     <plugin>
+       <groupId>org.apache.maven.plugins</groupId>
+       <artifactId>maven-changelog-plugin</artifactId>
+<!-- best practice is to add the version for your plugin here -->
+         <dependencies>
+           <dependency>
+             <groupId>org.apache.maven.scm</groupId>
+             <artifactId>maven-scm-provider-gitexe</artifactId>
+             <version>1.2</version>
+           </dependency>
+         </dependencies>
+     </plugin>
+   </plugins>
+ </reporting> 
+ 
    
 	<dependencies>
 		<!-- Spring -->
