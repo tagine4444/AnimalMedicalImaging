@@ -52,24 +52,29 @@
 	    
   </scm> 
   
-  <reporting>
-   <plugins>
-     <plugin>
-       <groupId>org.apache.maven.plugins</groupId>
-       <artifactId>maven-changelog-plugin</artifactId>
-<!-- best practice is to add the version for your plugin here -->
-         <dependencies>
-           <dependency>
-             <groupId>org.apache.maven.scm</groupId>
-             <artifactId>maven-scm-provider-gitexe</artifactId>
-             <version>1.2</version>
-           </dependency>
-         </dependencies>
-     </plugin>
-   </plugins>
- </reporting> 
- 
-   
+  
+  	<reporting>
+	    <plugins>
+	      <plugin>
+	        <groupId>org.apache.maven.plugins</groupId>
+	        <artifactId>maven-project-info-reports-plugin</artifactId>
+	        <version>2.6</version>
+	      </plugin>
+	      
+	       <plugin>
+		       <groupId>org.apache.maven.plugins</groupId>
+		       <artifactId>maven-changelog-plugin</artifactId>
+		         <dependencies>
+		           <dependency>
+		             <groupId>org.apache.maven.scm</groupId>
+		             <artifactId>maven-scm-provider-gitexe</artifactId>
+		             <version>1.2</version>
+		           </dependency>
+		         </dependencies>
+		    </plugin>
+	    </plugins>
+  </reporting>
+  
 	<dependencies>
 		<!-- Spring -->
 		<dependency>
