@@ -75,4 +75,13 @@ export class AccountService {
       this.router.navigateByUrl(previousUrl);
     }
   }
+
+  generatePresence(): void {
+    alert('about to get');
+    this.http.get<any>(SERVER_API_URL + 'presence').subscribe(data => {
+      alert('yep done success');
+    });
+
+    alert('cool, done');
+  }
 }

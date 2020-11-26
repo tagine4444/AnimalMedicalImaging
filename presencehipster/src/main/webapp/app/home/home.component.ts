@@ -28,6 +28,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.loginModalService.open();
   }
 
+  generatePresence(): void {
+    this.accountService.generatePresence();
+  }
+
   ngOnDestroy(): void {
     if (this.authSubscription) {
       this.authSubscription.unsubscribe();

@@ -1,0 +1,7 @@
+!#/bin/sh
+
+echo "copying jar"
+
+cp ../target/*.jar .
+
+echo "done"
